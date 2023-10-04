@@ -1,3 +1,5 @@
 # njogued.github.io
 
-njogued.me
+njogued.me  
+
+Github pages project for a portfolio website
