@@ -1,0 +1,50 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #391ed0;
+}
+
+.navbar {
+    box-shadow: 0 3px 15px rgb(15, 13, 131);
+    min-height: 50px;
+    background-color: #E4DADA;
+    border-bottom: solid 1px black;
+}
+
+.nav-link {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(25, 72, 201);
+}
+
+a.navbar-brand {
+    display: inline-block;
+    color: #2f56c1;
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+#welcome {
+    margin-top: 50px;
+    height: 500px;
+    background: url("../static/welcome.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-text {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.5;
+    font-size: 54px;
+}
+
+.title {
+    color: white;
+    text-transform: uppercase;
+}
