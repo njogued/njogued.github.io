@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    color: #391ed0;
+    color: #130a0a;
 }
 
 .navbar {
@@ -12,8 +12,8 @@ body {
 }
 
 .nav-link {
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 400;
     color: rgb(25, 72, 201);
 }
 
@@ -40,7 +40,7 @@ a.navbar-brand {
     background-size: cover;
     background-position: center;
     content: "";
-    opacity: 0.8;
+    opacity: 0.9;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -70,9 +70,75 @@ a.navbar-brand {
     width: 200px;
     height: 60px;
     text-transform: capitalize;
-    line-height: 60px;
+    line-height:55px;
     border: 1px solid blue;
     border-radius: 3px;
     text-decoration: none;
     position: relative;
+}
+
+#sectionHeaderText {
+    text-transform: uppercase;
+    padding: 50px 100px;
+    border-bottom: 1px solid black;
+}
+
+.section-header h2 {
+    /* font-size: 24px; */
+    font-weight: 600;
+}
+
+.about-content h3 {
+    color: #6a708e
+}
+
+#about-content-text {
+    font-size: 16px;
+    color: #999fb3;
+    line-height: 1.8;
+    border-bottom: 1px solid black;
+}
+
+/* .about-contact-text {
+    margin: 35px 0;
+} */
+
+.about-contact-text h3 {
+    color: #636a82;
+    text-transform: capitalize;
+    line-height: 1.8;
+}
+
+.about-content-img {
+    position: relative;
+    text-align: center;
+    margin: auto;
+}
+
+.about-content-img img {
+    vertical-align: middle;
+    /* max-width: 554px; */
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 5px 20px rgba(14,25,80,.30);
+}
+
+.about-content-img::before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(31,44,108,.3);
+}
+
+.about-list-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 20%;
+    background: #1f2c6c;
 }
