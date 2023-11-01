@@ -1,5 +1,9 @@
-# njogued.github.io
+### Portfolio Site Hosted on Github pages
 
-njogued.me  
+Check out the project [here!](https://njogued.me)
 
-Github pages project for a portfolio website
+### Technologies
+
+- HTML
+- CSS
+- Bootstrap
