@@ -77,7 +77,7 @@ a.navbar-brand {
     position: relative;
 }
 
-#sectionHeaderText {
+.sectionHeaderText {
     text-transform: uppercase;
     padding: 50px 100px;
     border-bottom: 1px solid #96a8bb;
