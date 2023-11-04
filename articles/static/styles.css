@@ -73,25 +73,17 @@ footer {
     border-top: solid 1px black;
 }
 
-.bodyText {
-    line-height: 1.8;
-    font-size: 25px;
-    line-height: 1.8;
-    font-weight: 400;
+.bodyText, #article-details {
+    font-size: 20px;
+    line-height: 2;
+    font-weight: 300;
 }
 
 .subTitle {
     line-height: 1.5;
-    margin-top: 30px;
-    font-size: 32px;
-    font-weight: 600;
-}
-
-#article-details {
-    line-height: 1.8;
-    font-size: 25px;
-    line-height: 1.8;
-    font-weight: 400;
+    margin-top: 26px;
+    font-size: 26px;
+    font-weight: 500;
 }
 
 #other-articles {
