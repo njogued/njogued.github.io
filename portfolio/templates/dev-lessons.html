@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,41 +18,39 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     /> -->
-    <title>
-      5 Key Lessons You Learn After Building a Software Development Project
-    </title>
+    <title>Edward Njogu Portfolio Page</title>
     <script
       src="https://unpkg.com/htmx.org@1.9.6"
       integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
       crossorigin="anonymous"
     ></script>
-    <link href="static/styles.css" rel="stylesheet" />
+    <link href="{% static 'article-styles.css' %}" rel="stylesheet" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="static/favicons/apple-touch-icon.png"
+      href="{% static 'favicons/apple-touch-icon.png' %}"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="static/favicons/favicon-32x32.png"
+      href="{% static 'favicons/favicon-32x32.png' %}"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="static/favicons/favicon-16x16.png"
+      href="{% static 'favicons/favicon-16x16.png' %}"
     />
-    <link rel="manifest" href="static/favicons/site.webmanifest" />
+    <link rel="manifest" href="{% static 'favicons/site.webmanifest' %}" />
   </head>
   <body>
     <div class="container-fluid">
       <nav class="navbar fixed-top navbar-expand-md">
         <div class="container-fluid">
-          <a class="navbar-brand mx-5" href="https://njogued.me">
+          <a class="navbar-brand mx-5" href="#">
             <img
-              src="static/profile_app/njogued_blue.png"
+              src="{% static 'profile_app/njogued_blue.png' %}"
               alt="njogued"
               width="58"
               height="45"
