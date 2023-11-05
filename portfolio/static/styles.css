@@ -213,3 +213,52 @@ footer {
     margin-bottom: 0px;
     background: lavender;
 }
+
+.chat-icon {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+  }
+  
+.chat-icon img {
+    width: 120px;
+    height: 120px;
+    border-radius: 75px;
+}
+
+.modal-dialog {
+    position: fixed;
+    top: auto;
+    right: 50px;
+    left: auto;
+    bottom: 50px;
+}
+
+.outgoingMessage {
+    border: solid 1px black;
+    border-radius: 5px;
+    display: flex;
+    width: 75%;
+    margin-bottom: 5px;
+    padding: 5px;
+    margin-left: 25%;
+}
+
+.incomingMessage {
+    border: solid 1px black;
+    border-radius: 5px;
+    display: flex;
+    width: 75%;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#chatContent {
+    height: 50px;
+}
+
+#chatInputCol {
+    padding: 3px;
+    margin: 0px;
+}
