@@ -219,15 +219,15 @@ footer {
     bottom: 40px;
     right: 40px;
     cursor: pointer;
+    border-radius: 70px;
   }
   
 .chat-icon img {
     width: 120px;
     height: 120px;
-    border-radius: 75px;
 }
 
-.modal-dialog {
+#modal-dialog {
     position: fixed;
     top: auto;
     right: 50px;
@@ -261,4 +261,9 @@ footer {
 #chatInputCol {
     padding: 3px;
     margin: 0px;
+}
+
+.sentMessageTime {
+    width: 15%;
+    margin-left: 85%;
 }
