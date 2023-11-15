@@ -257,6 +257,7 @@ footer {
 
 #chatContent {
     height: 50px;
+    width: 100%;
 }
 
 #chatInputCol {
@@ -267,6 +268,11 @@ footer {
 .sentMessageTime {
     width: 15%;
     margin-left: 85%;
+}
+
+.modal-footer .col-xs-12 {
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 576px) {
