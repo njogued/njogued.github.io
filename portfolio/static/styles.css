@@ -233,6 +233,7 @@ footer {
     right: 50px;
     left: auto;
     bottom: 50px;
+    width: 100%;
 }
 
 .outgoingMessage {
@@ -267,3 +268,17 @@ footer {
     width: 15%;
     margin-left: 85%;
 }
+
+@media (max-width: 576px) {
+    #modal-dialog {
+      width: 75%;
+    }
+    .chat-icon {
+        width: 20%;
+        aspect-ratio: 1;
+      }
+      .chat-icon img {
+        width: 100%;
+        height: 100%;
+      }
+  }
