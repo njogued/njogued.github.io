@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext"
+      rel="stylesheet"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    /> -->
+    <title>Navigating the Basics of Pandas</title>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.6"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      crossorigin="anonymous"
+    ></script>
+    <link href="static/styles.css" rel="stylesheet" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="static/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="static/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="static/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="static/favicons/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar fixed-top navbar-expand-md">
+        <div class="container-fluid">
+          <a class="navbar-brand mx-5" href="https://njogued.me">
+            <img
+              src="static/profile_app/njogued_blue.png"
+              alt="njogued"
+              width="58"
+              height="45"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav px-3" style="margin-left: auto">
+              <a class="nav-link px-3 mx-1" href="https://njogued.me">HOME</a>
+              <a class="nav-link px-3 mx-1" href="https://njogued.me/#about"
+                >ABOUT</a
+              >
+              <a class="nav-link px-3 mx-1" href="https://njogued.me/#skills"
+                >SKILLS</a
+              >
+              <a class="nav-link px-3 mx-1" href="https://njogued.me/#projects"
+                >PROJECTS</a
+              >
+              <a class="nav-link px-3 mx-1" href="https://njogued.me/#contact"
+                >CONTACT</a
+              >
+              <a class="nav-link px-3 mx-1" href="https://njogued.me/#articles"
+                >ARTICLES</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section id="coverbanner_pandas"></section>
+      <div class="container">
+        <h2 id="article-title">Navigating the Basics of Pandas</h2>
+        <p class="bodyText">
+          If you are an aspiring data analyst or data scientist,
+          <a href="https://pandas.pydata.org/" target="_blank">pandas</a> is a
+          crucial weapon to have in your arsenal. In this article, I will dive
+          right into it and provide an overview of pandas.
+        </p>
+        <h5 class="subTitle">What is pandas?</h5>
+        <p class="bodyText">
+          Pandas is a robust Python library used for data analysis whose
+          versatile features allow the user to navigate data manipulation
+          easily. It is built on top of the NumPy library and it allows you to
+          perform operations such as cleaning messy data sets and group-by
+          operations.
+        </p>
+        <h5 class="subTitle">Pandas Essentials</h5>
+        <p class="bodyText">
+            Pandas provides two types of data structures: Data Frames and Series.
+            Series is a one-dimensional array that can hold data of any data type, while a dataframe is a two-dimensional data structure with rows and columns (like a MySQL table). 
+            <br>Here’s a pandas cheat sheet of essential functions:
+            <br>
+            <p>
+            Import pandas: import pandas (conventionally: import pandas as pd)
+            Creating & Importing DataFrames
+            Creating a dataframe: df = pd.DataFrame({ key1: [values_list], key2: [values_list]})
+            Importing data from csv file and store as dataframe: df = pd.read_csv(“dataset.csv”)
+            </p>
+            <p>
+            Exploring DataFrames
+            List datatypes in the dataframe’s series: df.dtypes
+            List columns: df.columns
+            Show the number of rows and columns in the dataframe: df.shape
+            Get a summary of the dataframe: df.info()
+            Get descriptive statistics of data frame: df.describe()
+            Show the first 5 rows: df.head()
+            Show the last 5 rows: df.tail()
+            </p><p>
+            Indexing and Selecting:
+            Selecting columns: df[‘column_name’] OR df.column_name
+            Selecting rows: df.loc[index] OR df.iloc[index]
+            </p>
+            Filtering Data
+            Creating a filter: filt = df[‘column’] > value
+            Filtering multiple conditions: filt = (df[column2] < value) & (df[column3] == value)
+            Applying the filter: df[filt] OR df.loc[filt] Using loc allows you to specify the columns to view, i.e: df.loc[filt, column4]
+            Sorting data: df.sort_values(by=’Column’), add parameter ‘ascending=False’ to sort in desc order
+            
+        </p>
+        <p class="bodyText">Happy coding!</p>
+        <div id="article-details">Published: Nov 20, 2023</div>
+        <section><h2 id="other-articles">Other Articles</h2></section>
+      </div>
+
+      <footer class="py-3 mt-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item">
+            <a
+              href="https://njogued.me"
+              class="nav-link px-2 text-body-secondary"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://njogued.me/#about"
+              class="nav-link px-2 text-body-secondary"
+              >About</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://njogued.me/#skills"
+              class="nav-link px-2 text-body-secondary"
+              >Skills</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://njogued.me/#projects"
+              class="nav-link px-2 text-body-secondary"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://njogued.me/#contact"
+              class="nav-link px-2 text-body-secondary"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://njogued.me/#articles"
+              class="nav-link px-2 text-body-secondary"
+              >Articles</a
+            >
+          </li>
+        </ul>
+        <p class="text-center text-body-secondary">
+          © 2023, https://njogued.me
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
