@@ -109,34 +109,40 @@
         <p class="bodyText">
             Pandas provides two types of data structures: Data Frames and Series.
             Series is a one-dimensional array that can hold data of any data type, while a dataframe is a two-dimensional data structure with rows and columns (like a MySQL table). 
-            <br>Here’s a pandas cheat sheet of essential functions:
-            <br>
-            <p>
-            Import pandas: import pandas (conventionally: import pandas as pd)
-            Creating & Importing DataFrames
-            Creating a dataframe: df = pd.DataFrame({ key1: [values_list], key2: [values_list]})
-            Importing data from csv file and store as dataframe: df = pd.read_csv(“dataset.csv”)
-            </p>
-            <p>
-            Exploring DataFrames
-            List datatypes in the dataframe’s series: df.dtypes
-            List columns: df.columns
-            Show the number of rows and columns in the dataframe: df.shape
-            Get a summary of the dataframe: df.info()
-            Get descriptive statistics of data frame: df.describe()
-            Show the first 5 rows: df.head()
-            Show the last 5 rows: df.tail()
+            <br><h5>Here’s a pandas cheat sheet of essential functions:</h5>
+            <br><p>
+            Import pandas: <code>import pandas</code> (conventionally: import pandas as pd)<br>
+            Creating a dataframe: <code>df = pd.DataFrame({ key1: [values_list], key2: [values_list]})</code><br>
+            Importing data from csv file and store as dataframe: <code>df = pd.read_csv(“dataset.csv”)</code><br>
             </p><p>
-            Indexing and Selecting:
-            Selecting columns: df[‘column_name’] OR df.column_name
-            Selecting rows: df.loc[index] OR df.iloc[index]
-            </p>
-            Filtering Data
-            Creating a filter: filt = df[‘column’] > value
-            Filtering multiple conditions: filt = (df[column2] < value) & (df[column3] == value)
-            Applying the filter: df[filt] OR df.loc[filt] Using loc allows you to specify the columns to view, i.e: df.loc[filt, column4]
-            Sorting data: df.sort_values(by=’Column’), add parameter ‘ascending=False’ to sort in desc order
-            
+            <h5>Exploring DataFrames</h5>
+            List datatypes in the dataframe’s series: <code>df.dtypes</code><br>
+            List columns: <code>df.columns</code><br>
+            Show the number of rows and columns in the dataframe: <code>df.shape</code><br>
+            Get a summary of the dataframe: <code>df.info()</code><br>
+            Get descriptive statistics of data frame: <code>df.describe()</code><br>
+            Show the first 5 rows: <code>df.head()</code><br>
+            Show the last 5 rows: <code>df.tail()</code><br>
+            </p><p>
+            <h5>Indexing and Selecting:</h5>
+            Selecting columns: <code>df[‘column_name’]</code> OR <code>df.column_name</code><br>
+            Selecting rows: <code>df.loc[index]</code> OR <code>df.iloc[index]</code><br>
+            Renaming columns: <code>df.rename(columns={"old": "name"})</code><br>
+            Reset index: <code>df.reset_index()</code>
+            </p><p>
+            <h5>Filtering Data</h5>
+            Creating a filter: <code>filt = df[‘column’] > value</code><br>
+            Filtering multiple conditions: <code>filt = (df[column2] < value) & (df[column3] == value)</code><br>
+            Applying the filter: <code>df[filt]</code> OR <code>df.loc[filt]</code> <br> 
+            Using loc allows you to specify the columns to view, i.e: <code>df.loc[filt, column4]</code><br>
+            Sorting data: <code>df.sort_values(by=’Column’)</code>, add parameter ‘ascending=False’ to sort in desc order<br></p>
+            <h5>Grouping and Aggregating</h5>
+            Grouping according to dataframe columns: <code>df.groupby(["Column1"])</code><br>
+            Selecting group: <code>df.get_group("Category")</code>
+        </p>
+        <h5 class="subTitle">Sample Scenario</h5>
+        <p>      
+
         </p>
         <p class="bodyText">Happy coding!</p>
         <div id="article-details">Published: Nov 20, 2023</div>
