@@ -157,13 +157,13 @@
           &nbsp;&nbsp;if population > 10000000:<br>
           &nbsp;&nbsp;&nbsp;&nbsp;return "1B+"<br>
           </code>
-          <strong>Apply checksize function to dataframe rows</strong>
-          <code>df['population_categories'] = df['Population'].apply(checksize)</code>
-          <strong>Group countries by population categories</strong>
-          <code>population_groups = df.groupby(['population_categories'])</code>
+          <strong>Apply checksize function to dataframe rows: </strong>
+          <code>df['population_categories'] = df['Population'].apply(checksize)</code><br>
+          <strong>Group countries by population categories: </strong>
+          <code>population_groups = df.groupby(['population_categories'])</code><br>
           <strong>Using plotly to plot the pie chart</strong>
-          <code>fig = px.pie(population_groups, values=population_groups.sum()["Population"], names=population_groups.sum().index, title="Population categories pie chart")</code><br><br>
-          <code>fig.show()</code>
+          <code>fig = px.pie(population_groups, values=population_groups.sum()["Population"], names=population_groups.sum().index, title="Population categories pie chart")</code><br>
+          Show chart: <code>fig.show()</code>
         </p>
         <p class="bodyText">Happy coding!</p>
         <div id="article-details">Published: Nov 20, 2023</div>
