@@ -17,9 +17,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     /> -->
-    <title>
-        All You Need to Know to Get Started with Chrome Extensions
-    </title>
+    <title>All You Need to Know to Get Started with Chrome Extensions</title>
     <script
       src="https://unpkg.com/htmx.org@1.9.6"
       integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
@@ -93,135 +91,178 @@
       <section id="coverbanner_chrome"></section>
       <div class="container">
         <h2 id="article-title">
-            All You Need to Know to Get Started with Chrome Extensions
+          All You Need to Know to Get Started with Chrome Extensions
         </h2>
         <p class="bodyText">
-            If you perform repetitive tasks on the browser, you may need to build a browser extension. An extension can add features, enhance the functionality of a website, and even remove unwanted elements. For this article, I will delve into the basics of Chrome Extensions by going over the manifest file, content scripts, background scripts, the popup, working with browser storage, and detecting browser events.           
+          If you perform repetitive tasks on the browser, you may need to build
+          a browser extension. An extension can add features, enhance the
+          functionality of a website, and even remove unwanted elements. For
+          this article, I will delve into the basics of Chrome Extensions by
+          going over the manifest file, content scripts, background scripts, the
+          popup, working with browser storage, and detecting browser events.
         </p>
         <h5 class="subTitle">Manifest File</h5>
         <p class="bodyText">
-            Manifest.json is a JSON file that is the backbone of a Chrome extension. The manifest.json specifies all the important information that pertains to the extension. For a Chrome extension, you must specify the manifest version, your extension’s name, and the extension version:
-            <div class="codeblock">
-                { 
-                    "manifest_version": 3, 
-                    // manifest v2 is deprecated
-                      "name": "My Extension",
-                      "version": "1.0.1"
-                }                   
-            </div>
-            Optionally, you may specify attributes such as author, description, permissions, and content_scripts. 
+          Manifest.json is a JSON file that is the backbone of a Chrome
+          extension. The manifest.json specifies all the important information
+          that pertains to the extension. For a Chrome extension, you must
+          specify the manifest version, your extension’s name, and the extension
+          version:
+        </p>
+        <pre class="codeblock">
+{ 
+    "manifest_version": 3,
+    // manifest v2 is deprecated
+    "name": "My Extension",
+    "version": "1.0.1"
+}</pre
+        >
+        <p class="bodyText">
+          Optionally, you may specify attributes such as author, description,
+          permissions, and content_scripts.
         </p>
         <h5 class="subTitle">Content Scripts</h5>
         <p class="bodyText">
-            Content scripts manipulate the DOM and can be used to modify a webpage, click on buttons, insert new content, or remove content (such as ads). Content scripts can be loaded into a webpage either through the manifest.json file or through the service worker. 
-            Manifest.json:
-            <div class="codeblock">
-                “content_scripts”: [{
-            "matches": ["https://somewebsite.com/*"],
-            "js": ["content.js"]
-            }],
-            </div>
-            or background.js 
-            <div class="codeblock">
-                chrome.action.onClicked.addListener((tab) => {
-                    chrome.scripting.executeScript({
-                      target: { tabId: tab.id },
-                      files: ['content-script.js']
-                    });
-                  });                  
-            </div>
-            Check out the differences between the two methods <a href="https://medium.com/@fullstackmatt/injecting-content-scripts-in-chrome-extensions-statically-vs-programmatically-763ba90e6fc3#:~:text=There%20are%20two%20ways%20to,executeScript%20API." target="_blank">here.</a>
+          Content scripts manipulate the DOM and can be used to modify a
+          webpage, click on buttons, insert new content, or remove content (such
+          as ads). Content scripts can be loaded into a webpage either through
+          the manifest.json file or through the service worker. Manifest.json:
         </p>
-        <h5 class="subTitle">
-            Background Scripts
-        </h5>
+        <pre class="codeblock">
+“content_scripts”: [{
+    "matches": ["https://somewebsite.com/*"],
+    "js": ["content.js"]<
+}],</pre
+        >
+        <p class="bodyText">or background.js</p>
+        <pre class="codeblock">
+chrome.action.onClicked.addListener((tab) => {
+    chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content-script.js'] });
+});</pre
+        >
         <p class="bodyText">
-            The background script is the extension’s service worker and therefore does not have access to the DOM. The background script has storage permissions by default and can execute a variety of commands including navigating to a new page, closing a tab, and it has access to the tab information too. The background script is specified in the manifest.json file:
-            <div class="codeblock">
-                "background": {
-                    "service_worker": "background.js"
-                }            
-            </div>
-            The background script communicates with other scripts through messages. For example:
-            <div class="codeblock">
-                chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-                    if (changeInfo.status === "complete") {
-                      if (tab.url && tab.includes(“somewebsite.com”)) {
-                        chrome.tabs.sendMessage(tabId, {
-                          type: “doSomething",
-                        });
-                      }
-                  }
-                  
-            </div>
-            
+          Check out the differences between the two options
+          <a
+            href="https://medium.com/@fullstackmatt/injecting-content-scripts-in-chrome-extensions-statically-vs-programmatically-763ba90e6fc3#:~:text=There%20are%20two%20ways%20to,executeScript%20API."
+            target="_blank"
+            >here.</a
+          >
         </p>
+        <h5 class="subTitle">Background Scripts</h5>
+        <p class="bodyText">
+          The background script is the extension’s service worker and therefore
+          does not have access to the DOM. The background script has storage
+          permissions by default and can execute a variety of commands including
+          navigating to a new page, closing a tab, and it has access to the tab
+          information too. The background script is specified in the
+          manifest.json file:
+        </p>
+        <pre class="codeblock">
+"background": { "service_worker": "background.js" }</pre
+        >
+        <p class="bodyText">
+          The background script communicates with other scripts through
+          messages. For example:
+        </p>
+        <pre class="codeblock">
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status === "complete") {
+        if (tab.url && tab.includes(“somewebsite.com”)) {
+            chrome.tabs.sendMessage(tabId, { type: “doSomething", });
+        }
+    }
+});</pre
+        >
         <h5 class="subTitle">The Popup</h5>
         <p class="bodyText">
-            The popup is the visible content when the user clicks on the extension in the toolbar. The popup may be used to provide information on the extension and allow customization. The popup’s markup language is HTML, it can be styled using CSS, and you can include JavaScript as well. To specify the popup file in the manifest.json:
-            <div class="codeblock">
-                "action": {
-                    "default_popup": "popup/popup.html"
-                }
-            </div>         
+          The popup is the visible content when the user clicks on the extension
+          in the toolbar. The popup may be used to provide information on the
+          extension and allow customization. The popup’s markup language is
+          HTML, it can be styled using CSS, and you can include JavaScript as
+          well. To specify the popup file in the manifest.json:
         </p>
+        <pre class="codeblock">
+"action": { "default_popup": "popup/popup.html" }</pre
+        >
 
         <h5 class="subTitle">Working with Browser Storage</h5>
         <p class="bodyText">
-            You may need to store, retrieve, and track changes to user data. To accomplish this, you can use Chrome’s storage API. Chrome can store the user data in either the session storage or the local storage. You can choose between the two depending on your requirements. Here are some important considerations when making your choice. 
+          You may need to store, retrieve, and track changes to user data. To
+          accomplish this, you can use Chrome’s storage API. Chrome can store
+          the user data in either the session storage or the local storage. You
+          can choose between the two depending on your requirements. Here are
+          some important considerations when making your choice.
+        </p>
 
-            <table></table>
-
-            Using chrome session storage example:
-            <div class="codeblock">
-                async function setData {
-                    details = {
-                    var1: userinput1, 
-                    var2:userinput2
-                    }
-                        // note chrome.storage API supports both promises and callbacks
-                    await chrome.storage.session.set(details)
-                    }                 
-            </div>
-            To access session storage from content scripts, you need to set permissions in the background script.
-            <div class="codeblock">
-                chrome.storage.session.setAccessLevel({
-                accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS",
-                });
-            </div>
-            For more information on the chrome storage API, <a target="_blank" href="https://developer.chrome.com/docs/extensions/reference/storage/">RTFM.</a>         
+        <table></table>
+        <p class="bodyText">Using chrome session storage example:</p>
+        <pre class="codeblock">
+async function setData () {
+    details = { var1: userinput1, var2:userinput2 }
+    // note chrome.storage API supports both promises and callbacks
+    await chrome.storage.session.set(details)
+}</pre
+        >
+        <p class="bodyText">
+          To access session storage from content scripts, you need to set
+          permissions in the background script.
+        </p>
+        <pre class="codeblock">
+chrome.storage.session.setAccessLevel({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONTEXTS", });</pre
+        >
+        <p class="bodyText">
+          For more information on the chrome storage API,
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/extensions/reference/storage/"
+            >RTFM.</a
+          >
         </p>
 
         <h5 class="subTitle">Bonus: Detecting Browser Events</h5>
         <p class="bodyText">
-            You may need your extension to detect changes in a webpage. The MutationObserver interface provides the ability to watch for changes being made to the DOM tree. To accomplish this, use the constructor: MutationObserver(), which creates and returns a new MutationObserver and it can invoke a specified callback function when DOM changes occur.
-            Say, for example, there is a proceed button on a webpage that is disabled for 30 seconds. To detect when the proceed button on the webpage is no longer disabled and then click on it:
-            <div class="codeblock">
-                const proceedButton = document.getElementById("proceed-btn");
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                    if (
-                        mutation.type === "attributes" &&
-                        mutation.attributeName === "disabled"
-                    ) {
-                        proceedButton.click();
-                    }
-                    });
-                });
-            </div>
-            The mutation observer instance has three instance methods: disconnect(), observe(), and takeRecords(). You can use observe to activate the MutationObserver to begin receiving notifications when DOM changes occur. For example to observe the proceed button:
-            <div class="codeblock">
-                observer.observe(proceedButton, {
-                    attributes: true,
-                    attributeFilter: ["disabled"],
-                  });            
-            </div>
-            For more info, check out <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank">MDN Docs.</a>
-
-            With the above introduction, you should now have the basics to start building your chrome extension, and automate the web.
+          You may need your extension to detect changes in a webpage. The
+          MutationObserver interface provides the ability to watch for changes
+          being made to the DOM tree. To accomplish this, use the constructor:
+          MutationObserver(), which creates and returns a new MutationObserver
+          and it can invoke a specified callback function when DOM changes
+          occur. Say, for example, there is a proceed button on a webpage that
+          is disabled for 30 seconds. To detect when the proceed button on the
+          webpage is no longer disabled and then click on it:
+        </p>
+        <pre class="codeblock">
+const proceedButton = document.getElementById("proceed-btn");
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if ( mutation.type === "attributes" && mutation.attributeName === "disabled" ) {
+            proceedButton.click(); 
+        }
+    });
+});</pre
+        >
+        <p class="bodyText">
+          The mutation observer instance has three instance methods:
+          disconnect(), observe(), and takeRecords(). You can use observe to
+          activate the MutationObserver to begin receiving notifications when
+          DOM changes occur. For example to observe the proceed button:
+        </p>
+        <pre class="codeblock">
+observer.observe(proceedButton,
+    { attributes: true, attributeFilter: ["disabled"],
+});</pre
+        >
+        <p class="bodyText">
+          For more info, check out
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver"
+            target="_blank"
+            >MDN Docs.</a
+          ><br />
+          With the above introduction, you should now have the basics to start
+          building your chrome extension, and automate the web.
         </p>
 
-        <p class="bodyText">Happy coding!</p>
+        <p class="bodyText"><strong>Happy coding!</strong></p>
         <div id="article-details">Published: Dec 02, 2023</div>
         <section><h2 id="other-articles">Other Articles</h2></section>
       </div>
