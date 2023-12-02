@@ -107,65 +107,148 @@
         </p>
         <h5 class="subTitle">Pandas Essentials</h5>
         <p class="bodyText">
-            Pandas provides two types of data structures: Data Frames and Series.
-            Series is a one-dimensional array that can hold data of any data type, while a dataframe is a two-dimensional data structure with rows and columns (like a MySQL table). 
-            <br><h5>Here’s a pandas cheat sheet of essential functions:</h5>
-            <br><p class="bodyText">
-            Import pandas: <code>import pandas</code> (conventionally: import pandas as pd)<br>
-            Creating a dataframe: <code>df = pd.DataFrame({ key1: [values_list], key2: [values_list]})</code><br>
-            Importing data from csv file and store as dataframe: <code>df = pd.read_csv(“dataset.csv”)</code><br>
-            </p><p class="bodyText">
-            <h5>Exploring DataFrames</h5>
-            List datatypes in the dataframe’s series: <code>df.dtypes</code><br>
-            List columns: <code>df.columns</code><br>
-            Show the number of rows and columns in the dataframe: <code>df.shape</code><br>
-            Get a summary of the dataframe: <code>df.info()</code><br>
-            Get descriptive statistics of data frame: <code>df.describe()</code><br>
-            Show the first 5 rows: <code>df.head()</code><br>
-            Show the last 5 rows: <code>df.tail()</code><br>
-            </p><p class="bodyText">
-            <h5>Indexing and Selecting:</h5>
-            Selecting columns: <code>df[‘column_name’]</code> OR <code>df.column_name</code><br>
-            Selecting rows: <code>df.loc[index]</code> OR <code>df.iloc[index]</code><br>
-            Renaming columns: <code>df.rename(columns={"old": "name"})</code><br>
-            Reset index: <code>df.reset_index()</code>
-            </p><p class="bodyText">
-            <h5>Filtering Data</h5>
-            Creating a filter: <code>filt = df[‘column’] > value</code><br>
-            Filtering multiple conditions: <code>filt = (df[column2] < value) & (df[column3] == value)</code><br>
-            Applying the filter: <code>df[filt]</code> OR <code>df.loc[filt]</code> <br> 
-            Using loc allows you to specify the columns to view, i.e: <code>df.loc[filt, column4]</code><br>
-            Sorting data: <code>df.sort_values(by=’Column’)</code>, add parameter ‘ascending=False’ to sort in desc order<br>
-            </p><p class="bodyText">
-            <h5>Grouping and Aggregating</h5>
-            Grouping according to dataframe columns: <code>df.groupby(["Column1"])</code><br>
-            Selecting group: <code>df.get_group("Category")</code><br>
-            Mean, median, sum:<code>df[["Col0", "Col1"]].agg({"Col0": "mean", "Col1":"median"})</code>
-        </p></p>
+          Pandas provides two types of data structures: Data Frames and Series.
+          Series is a one-dimensional array that can hold data of any data type,
+          while a dataframe is a two-dimensional data structure with rows and
+          columns (like a MySQL table).
+        </p>
+        <h5>Here’s a pandas cheat sheet of essential functions:</h5>
+        <div class="listItems">
+          <ul>
+            <li>
+              Import pandas: <code>import pandas</code> (conventionally:
+              <code>import pandas as pd</code>)
+            </li>
+            <li>
+              Creating a dataframe:
+              <code
+                >df = pd.DataFrame({ key1: [values_list], key2:
+                [values_list]})</code
+              >
+            </li>
+            <li>
+              Importing data from csv file and store as dataframe:
+              <code>df = pd.read_csv(“dataset.csv”)</code>
+            </li>
+          </ul>
+        </div>
+
+        <h5>Exploring DataFrames</h5>
+        <div class="listItems">
+          <ul>
+            <li>
+              List datatypes in the dataframe’s series: <code>df.dtypes</code>
+            </li>
+            <li>Show the last 5 rows: <code>df.tail()</code></li>
+            <li>List columns: <code>df.columns</code></li>
+            <li>
+              Show the number of rows and columns in the dataframe:
+              <code>df.shape</code>
+            </li>
+            <li>Get a summary of the dataframe: <code>df.info()</code></li>
+            <li>
+              Get descriptive statistics of data frame:
+              <code>df.describe()</code>
+            </li>
+            <li>Show the first 5 rows: <code>df.head()</code></li>
+          </ul>
+        </div>
+
+        <h5>Indexing and Selecting:</h5>
+        <div class="listItems">
+          <ul>
+            <li>
+              Selecting columns: <code>df[‘column_name’]</code> OR
+              <code>df.column_name</code>
+            </li>
+            <li>
+              Selecting rows: <code>df.loc[index]</code> OR
+              <code>df.iloc[index]</code>
+            </li>
+            <li>
+              Renaming columns: <code>df.rename(columns={"old": "name"})</code>
+            </li>
+            <li>Reset index: <code>df.reset_index()</code></li>
+          </ul>
+        </div>
+
+        <h5>Filtering Data</h5>
+        <div class="listItems">
+          <ul>
+            <li>Creating a filter: <code>filt = df[‘column’] > value</code></li>
+            <li>
+              Filtering multiple conditions:
+              <code>filt = (df[column2] < value) & (df[column3] == value)</code>
+            </li>
+            <li>
+              Applying the filter: <code>df[filt]</code> OR
+              <code>df.loc[filt]</code>
+            </li>
+            <li>
+              Using loc allows you to specify the columns to view, i.e:
+              <code>df.loc[filt, column4]</code>
+            </li>
+            <li>
+              Sorting data: <code>df.sort_values(by=’Column’)</code>, add
+              parameter ‘ascending=False’ to sort in desc order
+            </li>
+          </ul>
+        </div>
+
+        <h5>Grouping and Aggregating</h5>
+        <div class="listItems">
+          <ul>
+            <li>
+              Grouping according to dataframe columns:
+              <code>df.groupby(["Column1"])</code>
+            </li>
+            <li>Selecting group: <code>df.get_group("Category")</code></li>
+            <li>
+              Mean, median, sum:<code
+                >df[["Col0", "Col1"]].agg({"Col0": "mean",
+                "Col1":"median"})</code
+              >
+            </li>
+          </ul>
+        </div>
         <h5 class="subTitle">Sample Scenario</h5>
         <p class="bodyText">
-          Given a dataframe with country data, draw a pie chart of population categories:<br>
-          Categories: less than 10M, 10M - 100M, 100M - 1B, 1B+<br>
-          <strong>Create Function to Categorize Data</strong><br>
-          <code>def checksize(population):<br>
-          &nbsp;&nbsp;if population > 10000000:<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;return "-10M"<br>
-          &nbsp;&nbsp;if population > 10000000:<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;return "10M - 100M"<br>
-          &nbsp;&nbsp;if population > 10000000:<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;return "100M - 1B"<br>
-          &nbsp;&nbsp;if population > 10000000:<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;return "1B+"<br>
-          </code>
-          <strong>Apply checksize function to dataframe rows: </strong>
-          <code>df['population_categories'] = df['Population'].apply(checksize)</code><br>
-          <strong>Group countries by population categories: </strong>
-          <code>population_groups = df.groupby(['population_categories'])</code><br>
-          <strong>Using plotly to plot the pie chart</strong>
-          <code>fig = px.pie(population_groups, values=population_groups.sum()["Population"], names=population_groups.sum().index, title="Population categories pie chart")</code><br>
-          Show chart: <code>fig.show()</code>
+          Given a dataframe with country data, draw a pie chart of population
+          categories:<br />
+          Categories: less than 10M, 10M - 100M, 100M - 1B, 1B+.
         </p>
-        <p class="bodyText">Happy coding!</p>
+        <strong>Create Function to Categorize Data</strong>
+        <pre class="codeblock">
+def checksize(population):
+  if population > 10000000:
+    return "-10M"
+  if population > 10000000:
+    return "10M - 100M"
+  if population > 10000000:
+    return "100M - 1B"
+  if population > 10000000:
+    return "1B+"
+</pre
+        >
+        <strong>Apply checksize function to dataframe rows: </strong>
+        <pre class="codeblock">
+df['population_categories'] = df['Population'].apply(checksize)</pre
+        >
+        <strong>Group countries by population categories: </strong>
+        <pre class="codeblock">
+population_groups = df.groupby(['population_categories'])</pre
+        >
+        <strong>Using plotly to plot the pie chart</strong>
+        <pre class="codeblock">
+fig = px.pie(population_groups,
+  values=population_groups.sum()["Population"],
+  names=population_groups.sum().index, title="Population categories pie
+  chart")</pre
+        >
+        <strong>Show chart: </strong>
+        <pre class="codeblock">fig.show()</pre>
+        <br />
+        <p class="bodyText"><strong>Happy coding!</strong></p>
         <div id="article-details">Published: Nov 20, 2023</div>
         <section><h2 id="other-articles">Other Articles</h2></section>
       </div>
