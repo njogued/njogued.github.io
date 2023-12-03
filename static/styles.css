@@ -28,7 +28,7 @@ a.navbar-brand {
 #welcome {
     position: relative;
     margin-top: 50px;
-    height: 550px;
+    height: 500px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -200,7 +200,7 @@ footer {
     display: flex;
 }
 
-.articles .card {
+.card {
     border: 1px solid black;
     padding: 5px 5px;
 }

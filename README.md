@@ -7,3 +7,4 @@ Check out the project [here!](https://njogued.me)
 - HTML
 - CSS
 - Bootstrap
+- JavaScript
