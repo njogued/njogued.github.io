@@ -79,7 +79,11 @@ a.navbar-brand {
 
 #sectionHeaderText {
     text-transform: uppercase;
-    padding: 50px 100px;
+    padding: 30px 100px;
+    margin-bottom: 0px;
+}
+
+#about-me-header {
     border-bottom: 1px solid #96a8bb;
 }
 
@@ -138,8 +142,8 @@ a.navbar-brand {
     width: 80%;
 }
 
-#about, #skills {
-    border-bottom: 1px solid black;
+#about, #skills, #projects, #articles, #services {
+    border-bottom: 1px solid #96a8bb;
 }
 
 .bootstrap-link-icons a {
@@ -193,7 +197,6 @@ footer {
 
 .card-title a {
     font-size: 24px;
-    margin: 20px 15px;
     font-weight: 400;
     text-decoration: none;
     line-height: 1.4;
@@ -203,6 +206,32 @@ footer {
 .card {
     border: 1px solid black;
     padding: 5px 5px;
+}
+
+.projectsCardImg {
+    height: 60%;
+}
+
+.projectsCardTitle {
+    height: 40%;
+    display: flex;
+}
+
+.projectsCardTitle a {
+    margin: auto auto;
+}
+
+.articles-card-image {
+    height: 40%;
+}
+
+.articles-card-title {
+    height: 60%;
+
+}
+
+.articles-card-title a {
+    margin: 5px 10px;
 }
 
 .col-lg-3.col-md-4.col-sm-6 {
@@ -288,3 +317,10 @@ footer {
         height: 100%;
       }
   }
+
+  @media (max-width: 576px) {
+    .card {
+        height: auto;
+    }
+  }
+
