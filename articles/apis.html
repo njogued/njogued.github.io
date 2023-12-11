@@ -91,61 +91,160 @@
       <section id="coverbanner_apis"></section>
       <div class="container">
         <h2 id="article-title">All About APIs (With a Practical Example)</h2>
-        <p class="bodyText">
+        <div class="bodyText">
           API stands for Application Programming Interface, and it refers to a
           mechanism of communication between two software systems. For example,
           an API may be used to connect a web application’s back-end server to
           the front-end client. Communication between these systems involves
           requests and responses between the server and the client. The
           endpoints used can be obtained from the API’s documentation.
-        </p>
-        <h5 class="subTitle" id="servlist">API Protocols</h5>
-        <p class="bodyText">
+        </div>
+        <h5 class="subTitle">API Protocols</h5>
+        <div class="bodyText">
           There are three main API protocols: representational state transfer
           (REST) APIs, remote procedural call (RPC) APIs, and simple object
           access protocol (SOAP) APIs. Of these, REST APIs are the most popular
           due to its flexibility and implementation, ease of integration,
           support for various data formats including JSON, XML, and plain text,
           and high scalability.
-        </p>
-        <h5 class="subTitle" id="servicemtaani">REST APIs</h5>
-        <p class="bodyText">
+        </div>
+        <h5 class="subTitle">REST APIs</h5>
+        <div class="bodyText">
           REST APIs use HTTP requests (GET, PUT, POST, PATCH, DELETE) to access
           and use data. The response data is typically sent in the body of the
-          HTTP response. Check out this <a href="https://www.geeksforgeeks.org/different-kinds-of-http-requests/" target="_blank">GeeksforGeeks article</a> for
-          information on each of these HTTP requests. The specific endpoints
+          HTTP response. Check out this
+          <a
+            href="https://www.geeksforgeeks.org/different-kinds-of-http-requests/"
+            target="_blank"
+            >GeeksforGeeks article</a
+          >
+          for information on each of these HTTP requests. The specific endpoints
           used to make these requests vary between software systems and are
           defined in the API documentation. For example, the Coinbase exchange
           rates API can be used to find out the current exchange rates for
-          different currencies. From the <a href="https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-exchange-rates" target="_blank">API Docs</a>,
-          the HTTP Request (GET https://api.coinbase.com/v2/exchange-rates)
+          different currencies. From the
+          <a
+            href="https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-exchange-rates"
+            target="_blank"
+            >API Docs</a
+          >, the HTTP Request (GET https://api.coinbase.com/v2/exchange-rates)
           takes one optional argument, the currency, as a query parameter.
-        </p>
+        </div>
+        <br />
+        <h5 class="subTitle">Practical Example</h5>
+        <div id="currencyDiv" class="bodyText">
+          Specify currencies and press the <code>Get Exchange Rate</code> button
+          to get exchange rates using the Coinbase API
+          <div class="row">
+            <div class="col-md-3 col-sm-6 mb-3">
+              <label for="baseCurrency">Base Currency:</label>
+              <select id="baseCurrency">
+                <!-- Add your currency options here, e.g., USD, EUR, etc. -->
+                <option value="BTC">BTC</option>
+                <option value="KES">KES</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="UGX">UGX</option>
+                <option value="TZS">TZS</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+              <label for="convertedCurrency">Converted Currency:</label>
+              <select id="convertedCurrency">
+                <!-- Add your currency options here -->
+                <option value="KES">KES</option>
+                <option value="USD">USD</option>
+                <option value="BTC">BTC</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="UGX">UGX</option>
+                <option value="TZS">TZS</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+              <label for="amount">Amount:</label>
+              <input type="number" id="amount" value="1" min="1" />
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+              <button onclick="fetchExchangeRate()">Get Exchange Rate</button>
+            </div>
+            <div class="row">
+              <div id="result">
+                <!-- Display the result here -->
+                Output:
+              </div>
+            </div>
+          </div>
+          This example uses the JavaScript's <code>fetch</code> to make a GET
+          request to the Coinbase API as shown:
+          <pre class="codeblock">
+var apiUrl = `https://api.coinbase.com/v2/exchange-rates?currency=${baseCurrency}`;
+// Make the API call
+fetch(apiUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    // Handle the API response and display the result
+    var rate = data.data.rates[convertedCurrency];
+    var result = amount * rate;
+    document.getElementById("result").innerHTML = 
+    `Output: ${amount} ${baseCurrency} equals ${result.toFixed(2)} ${convertedCurrency}`;
+})</pre
+          >
+        </div>
+
         <h5 class="subTitle">API Authentication: Securing Connections</h5>
-        <p class="bodyText">
+        <div class="bodyText">
           REST APIs are stateless, meaning they store no data between requests.
           Therefore, for APIs that require authentication, authentication must
-          be done with every request. <a href="https://rapidapi.com/blog/api-glossary/api-authentication/" target="_blank">API authentication</a>
+          be done with every request.
+          <a
+            href="https://rapidapi.com/blog/api-glossary/api-authentication/"
+            target="_blank"
+            >API authentication</a
+          >
           typically involves either authentication tokens or API keys. Due to
           the simplicity in use, API keys are commonly employed for paid APIs,
           and are either sent as query parameters or in the request header.
-        </p>
+        </div>
         <h5 class="subTitle">Free APIs: Exploring Without Authentication</h5>
-        <p class="bodyText">
+        <div class="bodyText">
           APIs like the Coinbase API used for the demo do not require
-          authentication. Other commonly used free APIs include: 
+          authentication. Other commonly used free APIs include:
           <ul>
-          <li><a href="https://newsapi.org/" target="_blank">News API</a></li>
-          <li><a href="https://developer.spotify.com/documentation/web-api/" target="_blank">Spotify API</a></li>
-          <li><a href="https://data.nasa.gov/developer" target="_blank">NASA API</a></li>
-          <li><a href="https://www.geojs.io/docs/v1/endpoints/" target="_blank">Geo API</a></li>
-          <li><a href="https://www.boredapi.com/" target="_blank">Bored API</a></li>
+            <li><a href="https://newsapi.org/" target="_blank">News API</a></li>
+            <li>
+              <a
+                href="https://developer.spotify.com/documentation/web-api/"
+                target="_blank"
+                >Spotify API</a
+              >
+            </li>
+            <li>
+              <a href="https://data.nasa.gov/developer" target="_blank"
+                >NASA API</a
+              >
+            </li>
+            <li>
+              <a href="https://www.geojs.io/docs/v1/endpoints/" target="_blank"
+                >Geo API</a
+              >
+            </li>
+            <li>
+              <a href="https://www.boredapi.com/" target="_blank">Bored API</a>
+            </li>
           </ul>
-          …and many more. You can find a list of
-          over <a href="https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/" target="_blank">200 free APIs here.</a>
-        </p>
+          …and many more. You can find a list of over
+          <a
+            href="https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/"
+            target="_blank"
+            >200 free APIs here.</a
+          >
+        </div>
         <h5 class="subTitle">Conclusion</h5>
-        <p class="bodyText">
+        <div class="bodyText">
           In conclusion, understanding APIs is pivotal in modern software
           development, where seamless communication between different systems is
           essential. APIs, or Application Programming Interfaces, act as
@@ -154,8 +253,8 @@
           applications or accessing diverse functionalities through free APIs,
           the understanding of APIs is a valuable asset for developers
           navigating the intricate web of software systems.
-        </p>
-        <p class="bodyText">Happy coding!</p>
+        </div>
+        <div class="bodyText">Happy coding!</div>
       </div>
 
       <footer class="py-3 mt-4">
@@ -203,10 +302,42 @@
             >
           </li>
         </ul>
-        <p class="text-center text-body-secondary">
+        <div class="text-center text-body-secondary">
           © 2023, https://njogued.me
-        </p>
+        </div>
       </footer>
     </div>
+    <script>
+      function fetchExchangeRate() {
+        // Get user inputs
+        var baseCurrency = document.getElementById("baseCurrency").value;
+        var convertedCurrency =
+          document.getElementById("convertedCurrency").value;
+        var amount = document.getElementById("amount").value;
+
+        // Construct the API URL
+        var apiUrl = `https://api.coinbase.com/v2/exchange-rates?currency=${baseCurrency}`;
+
+        // Make the API call
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the API response and display the result
+            var rate = data.data.rates[convertedCurrency];
+            var result = amount * rate;
+
+            document.getElementById(
+              "result"
+            ).innerHTML = `Output: ${amount} ${baseCurrency} equals ${result.toFixed(
+              2
+            )} ${convertedCurrency}`;
+          })
+          .catch((error) => {
+            console.error("Error fetching exchange rate:", error);
+            document.getElementById("result").innerHTML =
+              "Error fetching exchange rate. Please try again.";
+          });
+      }
+    </script>
   </body>
 </html>

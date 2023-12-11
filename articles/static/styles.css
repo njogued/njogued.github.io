@@ -211,3 +211,21 @@ code {
     width: 100%;
     height: 100%;
 }
+
+#currencyDiv label {
+    display: block;
+}
+
+#currencyDiv .row {
+    display: flex;
+    align-items: flex-end;
+    margin: 10px 2px;
+}
+
+#baseCurrency, #convertedCurrency, #amount {
+    width: 50%;
+}
+
+#result {
+    border: 1px solid #dd1616
+}
