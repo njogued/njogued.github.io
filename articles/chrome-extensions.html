@@ -194,7 +194,39 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
           some important considerations when making your choice.
         </p>
 
-        <table></table>
+        <table>
+          <tr>
+            <td></td>
+            <td>Session Storage</td>
+            <td>Local Storage</td>
+          </tr>
+          <tr>
+            <td>Limit</td>
+            <td>The storage limit is set to a max of 10 MB.</td>
+            <td>
+              The sorage limit is 10 MB, but can be increased by requesting the
+              "unlimitedStorage" permission
+            </td>
+          </tr>
+          <tr>
+            <td>Expiry</td>
+            <td>Data is cleared when session ends.</td>
+            <td>Data is only cleared when the extension is removed.</td>
+          </tr>
+          <tr>
+            <td>Access Level</td>
+            <td>By default, it's not exposed to content scripts.</td>
+            <td>
+              Is exposed to content scripts and is thus more susceptible to XSS
+              (Cross-Site Scripting) attacks.
+            </td>
+          </tr>
+          <tr>
+            <td>Efficiency</td>
+            <td>Session storage is typically faster than local storage.</td>
+            <td>Slower than local storage</td>
+          </tr>
+        </table>
         <p class="bodyText">Using chrome session storage example:</p>
         <pre class="codeblock">
 async function setData () {
