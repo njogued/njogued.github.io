@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext"
+      rel="stylesheet"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    /> -->
+    <title>A Practical Guide to Self-Hosting n8n with Docker</title>
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      src="https://unpkg.com/htmx.org@1.9.6"
+    ></script>
+    <link href="static/styles.css" rel="stylesheet" />
+    <link
+      href="/static/favicons/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/static/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/static/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="/static/favicons/site.webmanifest" rel="manifest" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar fixed-top navbar-expand-md">
+        <div class="container-fluid">
+          <a class="navbar-brand mx-5" href="https://njogued.github.io">
+            <img
+              alt="njogued"
+              height="45"
+              src="/static/profile_app/njogued_blue.png"
+              width="58"
+            />
+          </a>
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav px-3" style="margin-left: auto">
+              <a class="nav-link px-3 mx-1" href="https://njogued.github.io"
+                >HOME</a
+              >
+              <a
+                class="nav-link px-3 mx-1"
+                href="https://njogued.github.io/#about"
+                >ABOUT</a
+              >
+              <a
+                class="nav-link px-3 mx-1"
+                href="https://njogued.github.io/#skills"
+                >SKILLS</a
+              >
+              <a
+                class="nav-link px-3 mx-1"
+                href="https://njogued.github.io/#projects"
+                >PROJECTS</a
+              >
+              <a
+                class="nav-link px-3 mx-1"
+                href="https://njogued.github.io/#contact"
+                >CONTACT</a
+              >
+              <a
+                class="nav-link px-3 mx-1"
+                href="https://njogued.github.io/#articles"
+                >ARTICLES</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section id="coverbanner_n8n"></section>
+      <div class="container">
+        <h2 id="article-title">
+          A Practical Guide to Self-Hosting n8n with Docker
+        </h2>
+        <p class="bodyText">
+          n8n lets you orchestrate data and automate across tools. Self-hosting
+          gives you control over data, cost, and extensibility, so you can tune
+          performance, run custom code, and integrate private systems.
+        </p>
+        <p class="bodyText">
+          This step-by-step plan starts on Google Cloud’s free tier, then shows
+          you how to put n8n behind HTTPS, keep data persistent, and upgrade
+          safely.
+        </p>
+        <h5 class="subTitle">1) Self-hosting n8n for free on Google Cloud</h5>
+        <p class="bodyText">
+          Google Cloud’s Always Free program includes one non-preemptible
+          e2-micro VM per month in specific US regions, 30 GB-months of Standard
+          persistent disk, and 1 GB of outbound data from North America per
+          month. Eligible regions for the free e2-micro are us-west1 (Oregon),
+          us-central1 (Iowa), us-east1 (South Carolina). The limit is by hours
+          per month, combined across those regions.
+        </p>
+        <p class="bodyText">
+          Other hosting options: AWS, Hostinger, and DigitalOcean Droplets all
+          work well. For this guide, we focus on Google Cloud’s free option to
+          minimize cost.
+        </p>
+        <h5 class="subTitle">Create the VM on Google Cloud</h5>
+        <p class="bodyText">
+          In the Google Cloud Console, create or select a project, enable
+          Compute Engine, then click Create instance.
+        </p>
+        <p class="bodyText">
+          Use these settings to stay within free-tier limits: Region: us-west1,
+          us-central1, or us-east1. Machine type: e2-micro. Boot disk: 30 GB
+          Standard Persistent Disk. Firewall: check Allow HTTP and Allow HTTPS.
+        </p>
+        <p class="bodyText">
+          Reserve a static external IP, then assign it to the VM. Connect the IP
+          with your domain’s A record in your registrar (for example
+          n8n.example.com). SSH into the VM from the console to continue.
+        </p>
+        <h5 class="subTitle">Advanced for tiny RAM: add a small swapfile</h5>
+        <p class="bodyText">
+          A modest swapfile can reduce out-of-memory crashes during spikes. It
+          is not a replacement for RAM, it is a safety net.
+        </p>
+        <pre class="codeblock">
+# Create a 2G swapfile
+# Allocate 2G Swapfile
+sudo fallocate -l 2G /swapfile
+
+# secure permissions and make it a swap area
+sudo chmod 600 /swapfile
+sudo mkswap -f /swapfile
+
+# activate now
+sudo swapon /swapfile
+
+# verify
+free -h
+swapon --show
+</pre
+        >
+        <h5 class="subTitle">2) Docker, in plain English</h5>
+        <p class="bodyText">Image: a packaged app plus all dependencies.</p>
+        <p class="bodyText">Container: a running instance of an image.</p>
+        <p class="bodyText">
+          Volume: a folder on disk that survives restarts and upgrades.
+        </p>
+        <h5 class="subTitle">3) Install Docker and test</h5>
+        <p class="bodyText">Run these on the VM as a user with sudo.</p>
+        <pre class="codeblock">
+# Patch the VM
+sudo apt-get update &amp;&amp; sudo apt-get upgrade -y
+
+# Install Docker using the convenience script
+curl -fsSL https://get.docker.com | sudo sh
+
+# Allow your user to run docker without sudo (log out and back in after this)
+sudo usermod -aG docker $USER
+
+# Verify
+docker run hello-world
+docker version
+
+# Install Docker Compose plugin
+sudo apt-get install -y docker-compose-plugin
+docker compose version</pre
+        >
+        <h5 class="subTitle">4) Quick start: n8n with a single docker run</h5>
+        <p class="bodyText">
+          Create folders and an environment file for persistent settings.
+        </p>
+        <pre class="codeblock">
+sudo mkdir -p /opt/n8n /opt/n8n-media
+sudo chown -R $USER:$USER /opt/n8n /opt/n8n-media
+nano /opt/n8n/.env</pre
+        >
+        <p class="bodyText">Paste this minimal .env, then save.</p>
+        <pre class="codeblock">
+# External URL for webhooks and redirects
+WEBHOOK_URL=https://n8n.example.com
+
+# Timezone
+GENERIC_TIMEZONE=America/Los_Angeles
+
+# Execution and storage
+NODE_ENV=production
+EXECUTIONS_MODE=regular
+EXECUTIONS_PROCESS=main
+N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+N8N_BINARY_DATA_STORAGE_PATH=/media</pre
+        >
+        <p class="bodyText">
+          Start n8n, bound to localhost so it is not exposed directly.
+        </p>
+        <pre class="codeblock">
+docker run -d   --name n8n   --restart unless-stopped   --env-file /opt/n8n/.env   -p 127.0.0.1:5678:5678   -v /opt/n8n:/home/node/.n8n   -v /opt/n8n-media:/media   n8nio/n8n:latest</pre
+        >
+        <p class="bodyText">Check that it is healthy.</p>
+        <pre class="codeblock">
+docker ps
+curl -s http://127.0.0.1:5678/healthz</pre
+        >
+        <h5 class="subTitle">
+          5) Add HTTPS with Nginx and a free TLS certificate
+        </h5>
+        <p class="bodyText">Install Nginx and Certbot.</p>
+        <pre class="codeblock">
+sudo apt-get install -y nginx certbot python3-certbot-nginx</pre
+        >
+        <p class="bodyText">Create an Nginx site file.</p>
+        <pre class="codeblock">
+sudo tee /etc/nginx/sites-available/n8n.conf &gt;/dev/null &lt;&lt;'NGINX'
+server {
+    listen 80;
+    server_name n8n.example.com;
+
+    location / {
+        proxy_pass         http://127.0.0.1:5678/;
+        proxy_set_header   Host $host;
+        proxy_set_header   Origin $http_origin;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade  $http_upgrade;
+        proxy_set_header   Connection $connection_upgrade;
+    }
+}
+NGINX</pre
+        >
+        <p class="bodyText">Enable and test.</p>
+        <pre class="codeblock">
+sudo ln -s /etc/nginx/sites-available/n8n.conf /etc/nginx/sites-enabled/n8n.conf
+sudo nginx -t
+sudo systemctl reload nginx</pre
+        >
+        <p class="bodyText">Get a certificate and auto-enable HTTPS.</p>
+        <pre class="codeblock">
+sudo certbot --nginx -d n8n.example.com --redirect -m you@example.com --agree-tos -n</pre
+        >
+        <p class="bodyText">
+          Update .env so n8n knows its external URL is HTTPS, then restart n8n.
+        </p>
+        <pre class="codeblock">
+WEBHOOK_URL=https://n8n.example.com
+
+docker restart n8n</pre
+        >
+        <h5 class="subTitle">6) Docker Compose version for easier upgrades</h5>
+        <p class="bodyText">Compose makes your setup repeatable.</p>
+        <pre class="codeblock">
+mkdir -p /opt/n8n-compose &amp;&amp; cd /opt/n8n-compose
+cp /opt/n8n/.env ./.env
+nano docker-compose.yml</pre
+        >
+        <p class="bodyText">docker-compose.yml:</p>
+        <pre class="codeblock">
+services:
+  n8n:
+    image: n8nio/n8n:1.116.0
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"
+    env_file:
+      - .env
+    volumes:
+      - /opt/n8n:/home/node/.n8n
+      - /opt/n8n-media:/media
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5</pre
+        >
+        <p class="bodyText">Start it.</p>
+        <pre class="codeblock">
+docker compose up -d
+docker compose ps</pre
+        >
+        <p class="bodyText">Upgrade by changing the image tag, then:</p>
+        <pre class="codeblock">
+docker compose pull
+docker compose up -d</pre
+        >
+        <p class="bodyText">Check that it is healthy.</p>
+        <pre class="codeblock">
+docker ps
+curl -s http://127.0.0.1:5678/healthz</pre
+        >
+        <h5 class="subTitle">
+          7) Basics of self-hosted n8n: environment, storage, and backups
+        </h5>
+        <h5 class="subTitle">Environment variables you will actually use</h5>
+        <p class="bodyText">
+          WEBHOOK_URL must match your public HTTPS URL so webhooks and redirects
+          work.
+        </p>
+        <p class="bodyText">
+          GENERIC_TIMEZONE sets timestamps in the UI and logs.
+        </p>
+        <p class="bodyText">
+          N8N_DEFAULT_BINARY_DATA_MODE=filesystem moves large payloads out of
+          the DB and onto disk at N8N_BINARY_DATA_STORAGE_PATH.
+        </p>
+        <h5 class="subTitle">Storage with SQLite</h5>
+        <p class="bodyText">
+          The official image uses SQLite by default, stored under
+          /home/node/.n8n. Because you mapped /opt/n8n:/home/node/.n8n, your
+          database and credentials persist across restarts and upgrades. SQLite
+          is perfect for small to medium workloads and single node setups, then
+          you can migrate to Postgres later when you need more concurrency.
+        </p>
+        <p class="bodyText">Back up regularly.</p>
+        <pre class="codeblock">
+# Briefly stop to get a clean snapshot
+docker stop n8n
+tar -czf /opt/backups/n8n-$(date +%F).tar.gz /opt/n8n /opt/n8n-media
+docker start n8n</pre
+        >
+        <h5 class="subTitle">8) Troubleshooting</h5>
+        <p class="bodyText">View logs: docker logs -f n8n</p>
+        <p class="bodyText">
+          Health check: curl -s https://n8n.example.com/healthz
+        </p>
+        <p class="bodyText">
+          Free disk from old images: docker image prune -a and docker system
+          prune -a
+        </p>
+        <p class="bodyText">
+          Patch the VM: sudo apt-get update &amp;&amp; sudo apt-get upgrade -y
+        </p>
+        <h5 class="subTitle">9) Updating n8n to the latest version</h5>
+        <h5 class="subTitle">If you used a single docker run</h5>
+        <p class="bodyText">
+          Choose a specific version tag rather than latest, so you can roll back
+          predictably. Replace X.Y.Z with the target version.
+        </p>
+        <pre class="codeblock">
+# Pull the new image
+docker pull n8nio/n8n:X.Y.Z
+
+# Stop and remove the running container
+docker stop n8n &amp;&amp; docker rm n8n
+
+# Recreate with the same flags you used originally
+docker run -d   --name n8n   --restart unless-stopped   --env-file /opt/n8n/.env   -p 127.0.0.1:5678:5678   -v /opt/n8n:/home/node/.n8n   -v /opt/n8n-media:/media   n8nio/n8n:X.Y.Z
+
+# Verify
+docker logs --since=5m n8n | tail -n +1
+
+# Rollback if needed
+docker stop n8n &amp;&amp; docker rm n8n
+docker run -d ... n8nio/n8n:&lt;previous-tag&gt;</pre
+        >
+        <h5 class="subTitle">If you used Docker Compose</h5>
+        <p class="bodyText">
+          Edit docker-compose.yml and set the new tag for the image line, for
+          example:
+        </p>
+        <pre class="codeblock">image: n8nio/n8n:X.Y.Z</pre>
+        <p class="bodyText">Apply the update with minimal downtime:</p>
+        <pre class="codeblock">
+docker compose pull
+docker compose up -d
+docker compose ps
+
+# Verify
+curl -s http://127.0.0.1:5678/healthz
+docker compose logs -f --since=5m</pre
+        >
+        <p class="bodyText">
+          Rollback: restore the old tag in docker-compose.yml, then:
+        </p>
+        <pre class="codeblock">
+docker compose pull
+docker compose up -d</pre
+        >
+        <h5 class="subTitle">If you also run Runners</h5>
+        <p class="bodyText">
+          Update the Runners image tag in the same docker-compose.yml, then:
+        </p>
+        <pre class="codeblock">
+docker compose pull runners
+docker compose up -d runners</pre
+        >
+        <div id="article-details">Published: Oct 22, 2025</div>
+      </div>
+      <footer class="py-3 mt-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 text-body-secondary"
+              href="https://njogued.github.io"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 text-body-secondary"
+              href="https://njogued.github.io/#about"
+              >About</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 text-body-secondary"
+              href="https://njogued.github.io/#skills"
+              >Skills</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 text-body-secondary"
+              href="https://njogued.github.io/#projects"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 text-body-secondary"
+              href="https://njogued.github.io/#contact"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link px-2 text-body-secondary"
+              href="https://njogued.github.io/#articles"
+              >Articles</a
+            >
+          </li>
+        </ul>
+        <p class="text-center text-body-secondary">
+          © 2025, https://njogued.github.io
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
