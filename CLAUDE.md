@@ -4,120 +4,163 @@ Guidance for Claude (and humans) working in this repository.
 
 ## Overview
 
-This is Edward Njogu's personal portfolio website, served as a static site via
-**GitHub Pages** at `https://njogued.github.io` (previously mapped to the custom
-domain `njogued.me`). It is a hand-written, multi-page static site: no build
-step, no framework, no package manager. Files are edited directly and pushed to
-the default branch, which GitHub Pages publishes.
+Edward Njogu's personal portfolio, served as a static site via **GitHub Pages**
+at **`https://edwardnjogu.com`**. Hand-written multi-page HTML: no build step, no
+framework, no package manager, no CI. Files are edited directly and pushed to
+`main`, which GitHub Pages publishes.
+
+Pushing to `main` is a live deploy. There is no staging environment.
+
+## Domain
+
+- Custom domain `edwardnjogu.com`, set by the root `CNAME` file.
+- DNS: four `A` records on the apex → GitHub Pages, plus `www` CNAME →
+  `njogued.github.io`. Registrar is Spaceship.
+- **Enforce HTTPS is on.** `http://`, `www.`, and the old `njogued.github.io`
+  all 301 to `https://edwardnjogu.com/`.
+- The earlier custom domain `njogued.me` is dead and must not be reintroduced —
+  it was hardcoded in subpage nav links for years after lapsing.
 
 ## Tech stack
 
-- **HTML5** — hand-authored, one file per page.
-- **CSS3** — custom stylesheets (no preprocessor).
-- **Bootstrap 5.3.2** — loaded from CDN (jsDelivr) for layout and components.
-- **Vanilla JavaScript** — small inline `<script>` blocks (e.g. the chat widget
-  and contact-form validation on `index.html`). No JS framework.
-- **htmx 1.9.6** — loaded from CDN on every page, but currently not doing much;
-  most interactivity is plain JS.
-- **Google Fonts (Poppins)** — loaded from CDN.
-- **Icons8 / inline SVG** — for skill icons and social icons.
+- **HTML5**, hand-authored, one file per page.
+- **CSS3**, two custom stylesheets, no preprocessor.
+- **Geist + Geist Mono** from Google Fonts — the only remaining CDN dependency.
+- **Vanilla JS**, one three-line inline script per page (dynamic footer year),
+  plus the currency-converter demo on `articles/apis.html`.
 
-There is no Node, Python, or bundler in the pipeline despite the `.gitignore`
-listing `*.pyc`. Treat this as a pure static-HTML project.
+Bootstrap, htmx, Poppins, Icons8, and jsDelivr were **removed** in the July 2026
+redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 
 ## Repository structure
 
 ```
 /
-├── index.html                     # Landing page (hero, about, skills, projects,
-│                                   #   articles, services, contact, chat widget)
-├── README.md                      # Short project blurb
-├── robots.txt, sitemap.xml        # SEO (sitemap lastmod is stale: 2023-12-15)
-├── Edward Njogu Resume - 2026.pdf # Current resume (root copy)
+├── index.html                  # Landing page: hero, 01 about, 02 stack,
+│                               #   03 work, 04 services, 05 writing, 06 contact
+├── CNAME                       # edwardnjogu.com
+├── robots.txt, sitemap.xml     # SEO — sitemap uses real publication dates
+├── edward-njogu-resume.pdf     # Public resume (linked from contact)
+├── DESIGN.md                   # Visual system — read before any UI work
+├── SITE-ANALYSIS-AND-RECOMMENDATIONS.md   # Positioning gap analysis
 │
-├── static/                        # Global assets for the landing page
-│   ├── styles.css                 # Main stylesheet (~324 lines)
-│   ├── welcome.jpg, grad.jpg      # Hero + about images
-│   ├── chatbot1.png, chatcircle.png
-│   ├── favicons/                  # Full favicon set + site.webmanifest
-│   └── profile_app/njogued_blue.png  # Navbar logo
+├── static/
+│   ├── site.css                # THE design system (~980 lines): tokens, nav,
+│   │                           #   bands, cards, footer, doc pages
+│   ├── ed-site.svg             # Logo source (ED monogram, #4d0da2)
+│   ├── favicons/               # favicon.svg + PNG set + site.webmanifest
+│   └── styles.css              # LEGACY, orphaned — safe to delete
 │
-├── articles/                      # Blog / article pages (one HTML file each)
-│   ├── base.html                  # Article template / starting point
-│   ├── n8n-self-hosting-docker.html
-│   ├── ai-2024.html               # "AI trends ... 2025"
-│   ├── apis.html, chrome-extensions.html,
+├── articles/
+│   ├── base.html               # Template for new articles
+│   ├── n8n-self-hosting-docker.html    # Lead article
+│   ├── apis.html               # Has an interactive Coinbase demo + inline JS
+│   ├── ai-2024.html, chrome-extensions.html,
 │   │   dev-lessons.html, pandas-intro.html
-│   └── static/                    # Article-specific CSS + images
-│       └── styles.css             # Separate stylesheet for article pages
+│   └── static/styles.css       # Long-form typography, loads ON TOP of site.css
 │
-├── projects/
-│   ├── all.html                   # Full projects listing (anchored: #servlist,
-│   │                              #   #servicemtaani, #portfolio, #other)
-│   └── static/                    # Project screenshots
-│
-├── profile/
-│   ├── xp.html                    # Experience / CV-style page
-│   └── Edward_Njogu_Resume.pdf    # Second (older) resume copy
-│
-└── .vscode/settings.json
+└── projects/
+    └── all.html                # Detail page, anchored: #sosensus, #gmail-triage,
+                                #   #servlist, #servicemtaani, #portfolio, #other
 ```
+
+`profile/` was deleted (both `xp.html` and the stale resume copy).
 
 ## How pages relate
 
-- `index.html` is the entry point. Its navbar and footer link to in-page anchors
-  (`#about`, `#skills`, `#projects`, `#contact`, `#articles`) plus out to
-  `projects/all.html` and individual `articles/*.html` pages.
-- Project cards on the landing page deep-link into `projects/all.html#<anchor>`.
-- Article cards link directly to individual `articles/*.html` files.
-- `articles/base.html` is the reusable scaffold for new articles.
+- `index.html` is the entry point; nav and footer link to in-page anchors
+  (`#about`, `#stack`, `#work`, `#services`, `#writing`, `#contact`).
+- Work cards deep-link to `projects/all.html#<anchor>`. **Every project card
+  follows the same path: card → detail page → external link.** External URLs
+  live in the detail page's metadata table, not on the landing card.
+- Writing cards link to `articles/*.html`; LinkedIn posts link out directly.
+- Each article ends with a "more writing" list of the other five. Adding an
+  article means updating that list in every existing article.
+
+## Stylesheets
+
+| Page | Loads |
+|---|---|
+| `index.html` | `static/site.css` |
+| `projects/all.html` | `/static/site.css` |
+| `articles/*.html` | `/static/site.css` **then** `/articles/static/styles.css` |
+
+`static/site.css` owns the `:root` tokens. Never hardcode a colour — reference
+the variable.
 
 ## Conventions
 
-- **Styling:** the landing page and `profile/` use `static/styles.css`; article
-  pages use `articles/static/styles.css`. Keep them in sync where shared.
-- **Paths:** `index.html` uses relative asset paths (`static/...`); subpages use
-  root-absolute paths (`/static/...`). Match the pattern of the page you edit.
-- **CDNs pinned with SRI:** Bootstrap, htmx, and jsDelivr links include
-  `integrity` hashes. If you bump a version, update the hash too.
-- **New article workflow:** copy `articles/base.html`, replace `<title>`, cover
-  image (`articles/static/`), and body; then add a card to the Articles section
-  of `index.html` and a `<url>` entry to `sitemap.xml`.
-- **Fonts/colors:** Poppins throughout; primary brand blue is roughly
-  `#1948c9`/`#2f56c1` (see `static/styles.css`).
+- **Paths:** `index.html` uses relative (`static/…`); all subpages use
+  root-absolute (`/static/…`). Root-absolute is the house style — it is
+  depth-independent. Do not use `../`.
+- **Design tokens:** defined once on `:root` in `static/site.css`.
+- **Article prose markup** uses legacy class names (`.bodyText`, `.subTitle`,
+  `.codeblock`, `.listItems`) styled in `articles/static/styles.css`. This was
+  deliberate — restyling six files beat rewriting their prose. Keep using them.
+- **No shadows.** Structure comes from hairline borders and whitespace.
+- **New article:** copy `articles/base.html`; replace title, meta description,
+  canonical, eyebrow topic, date, and reading time; write the body; then add a
+  card to the Writing section of `index.html`, a `<url>` to `sitemap.xml`, and a
+  row to the "more writing" list in every other article.
+
+## Design system
+
+`DESIGN.md` is the spec. **One deliberate departure from it:** the accent is the
+logo violet `#4d0da2`, not the `#1d4ed8` blue the spec inherited from its
+Sosensus reference. A blue CTA beside a violet mark read as an accident. The
+near-black is `#100b1c` (violet-cast) for the same reason. Do not "correct"
+these back to blue.
+
+Signature elements: the hero run-log panel (a mock n8n execution that stamps in
+on load), ghost section numerals `01`–`06`, `// section.x` mono eyebrows, and
+the dot grid — footer only.
+
+Orange `--signal` is reserved for live/status indicators (the run-log dot,
+`● BUILDING` chips). It is never a CTA.
 
 ## Local development
 
-No server or build required. Open `index.html` directly, or serve the folder
-for correct absolute-path resolution:
+**Serve the folder — do not open files directly.** Subpages use root-absolute
+paths, so `file://` resolves `/static/site.css` against your disk root and the
+page renders unstyled.
 
 ```bash
-python3 -m http.server 8000   # then visit http://localhost:8000
+python3 -m http.server 8000   # then http://localhost:8000
 ```
 
-## Deployment
+## Content rules
 
-Pushing to the default branch publishes automatically via GitHub Pages. There is
-no CI, no staging environment, and no build artifacts.
+- **Do not invent metrics.** Client work is under NDA; the hero carries
+  verifiable facts (stack, timezone, availability) rather than a fabricated
+  stat row.
+- **No phone number.** Removed deliberately — a phone number is a persistent
+  identifier tied to 2FA and SIM-swap risk, unlike a rotatable email. This
+  includes `wa.me` links, which publish the number just as plainly.
+- Email is the only contact channel, plus GitHub and LinkedIn.
 
-## Known issues / maintenance notes
+## Known issues / open work
 
-- `sitemap.xml` `lastmod` dates are stale (2023-12-15) and the file omits some
-  current articles (e.g. the n8n self-hosting guide).
-- Footer copyright on `index.html` reads "© 2025".
-- The floating chat widget on `index.html` is a mock — it always replies
-  "this feature is still under development."
-- The contact `<form>` is commented out; a "TBD" placeholder card remains.
-- Two resume PDFs exist (`/Edward Njogu Resume - 2026.pdf` and
-  `/profile/Edward_Njogu_Resume.pdf`); the root copy is current.
-- `.DS_Store` files are committed in several folders and should be gitignored.
+- **No case studies.** The work section says "client automation work is under
+  NDA — case studies in progress." This is the biggest remaining content gap.
+- `ai-2024.html` is a 2024 predictions piece that reads dated on a site selling
+  AI expertise.
+- The hero promises a reply "within 1 working day" — a commitment, not a
+  placeholder.
+- **Orphaned assets** (tracked, unreferenced, safe to delete): `static/styles.css`,
+  `static/grad.jpg`, `static/welcome.jpg`, `static/chatbot1.png`,
+  `static/profile_app/njogued_blue.png`, `static/ed-site-logo.png`,
+  `projects/static/coding.jpg`, and the seven images in `articles/static/`
+  (~1.1MB) left over from the removed cover banners.
+- No SPF/DMARC records on the domain, so `edwardnjogu.com` can currently be
+  spoofed. Worth adding whether or not email is set up.
+- `profile/Edward_Njogu_Resume.pdf` is deleted but remains in git history
+  (commit `ee9ad8f`).
 
 ## Positioning context
 
-Edward's current professional focus is **AI automation / n8n development**
-(building production workflows, RAG pipelines with pgvector, LLM + Supabase
-integrations) heading toward an **AI implementation** specialization. The live
-site still frames him more generically ("software development, executive
-support, process automation"). Content changes should move the site toward the
-AI-automation positioning. See `SITE-ANALYSIS-AND-RECOMMENDATIONS.md` for the
-detailed gap analysis and update plan.
+Focus is **AI automation / n8n development** (production workflows, RAG
+pipelines with pgvector, LLM + Supabase integrations), heading toward an **AI
+implementation** specialization. The site was rewritten around this in July 2026.
+Copy should stay first-person and concrete; avoid agency-speak. See
+`SITE-ANALYSIS-AND-RECOMMENDATIONS.md` for the original gap analysis — its
+section-by-section recommendations are now implemented.
