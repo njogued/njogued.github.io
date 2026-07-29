@@ -1,2 +1,19 @@
+# macOS
+.DS_Store
+**/.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+*.swp
+
+# Python
 *.pyc
+__pycache__/
+
+# Unused assets kept locally
 grad.jpg
+
+# Local design reference only — committing it would publish it on the site
+Sosensus *.html

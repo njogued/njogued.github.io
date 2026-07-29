@@ -1,282 +1,293 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    color: #130a0a;
+/* ==========================================================================
+   Article pages — long-form typography.
+   Loads on top of /static/site.css, which supplies the tokens, nav, and
+   footer. This file styles the reading column only.
+
+   Legacy class names (.bodyText, .subTitle, .listItems, .codeblock) are kept
+   deliberately: the prose markup in each article is unchanged, so restyling
+   happens here rather than in six HTML files.
+   ========================================================================== */
+
+.article { padding-bottom: 96px; }
+
+/* --- header ------------------------------------------------------------- */
+
+.article__head {
+  padding-block: 88px 40px;
+  border-bottom: 1px solid var(--ink);
+  max-width: 46rem;
 }
 
-.navbar {
-    box-shadow: 0 3px 15px rgb(15, 13, 131);
-    min-height: 50px;
-    background-color: #FFFFFF;
-    border-bottom: solid 1px black;
+.article__title {
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
 }
 
-.nav-link {
-    font-size: 16px;
-    font-weight: 400;
-    color: rgb(25, 72, 201);
+.article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
-a.navbar-brand {
-    display: inline-block;
-    color: #2f56c1;
-    font-size: 20px;
-    font-weight: 300;
-    text-transform: uppercase;
+.article__meta span:not(:last-child)::after {
+  content: " ·";
+  color: var(--dashed);
 }
 
-#coverbanner {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* --- reading column ----------------------------------------------------- */
+
+.article__body {
+  max-width: 46rem;
+  padding-top: 8px;
 }
 
-#coverbanner::before {
-    background: url("./coverimg.png") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+.bodyText,
+.listItems {
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--body-text);
+  margin-top: 20px;
 }
 
-#article-title {
-    text-transform: uppercase;
-    padding: 30px 0px;
-    text-align: center;
-    border-bottom: 1px solid #96a8bb;
-}
-
-.section-header h2 {
-    /* font-size: 24px; */
-    font-weight: 600;
-}
-
-.about-content h3 {
-    color: #6a708e
-}
-
-.card {
-    width: 100%;
-    height: 100%;
-}
-
-footer {
-    border-top: solid 1px black;
-}
-
-.bodyText, #article-details {
-    font-size: 18px;
-    line-height: 2;
-    font-weight: 300;
-}
+.bodyText a,
+.listItems a { text-decoration: underline; text-underline-offset: 3px; }
 
 .subTitle {
-    line-height: 1.5;
-    margin-top: 26px;
-    font-size: 26px;
-    font-weight: 500;
+  margin-top: 56px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
-#other-articles {
-    border-bottom: solid black 1px;
-    border-top: solid black 1px;
-    padding: 20px 0px;
-    text-align: center;
+.article__body h3,
+.article__body h4 {
+  margin-top: 36px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-#coverbanner_pandas {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.article__body ul,
+.article__body ol {
+  margin-top: 14px;
+  padding-left: 22px;
+  list-style: disc;
 }
 
-#coverbanner_pandas::before {
-    background: url("./data_science.jpeg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+.article__body ol { list-style: decimal; }
+
+.article__body li {
+  margin-top: 8px;
+  font-size: 17px;
+  line-height: 1.7;
 }
+
+.article__body img {
+  display: block;
+  margin: 32px 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.article__body strong { font-weight: 600; color: var(--ink); }
+
+.article__body hr {
+  margin: 48px 0;
+  border: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.article__body blockquote {
+  margin: 32px 0;
+  padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--signal);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* --- code --------------------------------------------------------------- */
 
 code {
-    color: black;
-    background-color: #c5d4e482;
-    border: 1px solid grey;
-    padding: 2px;
-    font-size: 16px;
-    border-radius: 3px;
-    font-family: monospace;
-    font-weight: 300;
+  font-family: var(--mono);
+  font-size: 0.88em;
+  color: var(--violet);
+  background: var(--violet-wash);
+  border: 1px solid #e3d8f5;
+  border-radius: var(--radius);
+  padding: 1px 5px;
+  word-break: break-word;
 }
 
-#coverbanner_chrome {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.codeblock,
+pre {
+  margin-top: 20px;
+  background: var(--ink);
+  color: var(--dark-body);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
-#coverbanner_chrome::before {
-    background: url("./chrome_browser.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+.codeblock code,
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
 }
 
-.codeblock {
-    border: 1px solid black;
-    font-size: 18px;
-    border-radius: 4px;
-    padding: 8px;
-    background: #c5d4e482;
-    color: black;
+/* --- tables ------------------------------------------------------------- */
+
+.article__body table {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  font-size: 15px;
+  display: block;
+  overflow-x: auto;
 }
 
-.listItems {
-    font-family: 'Poppins', monospace;
-    line-height: 1.7;
-    font-size: 18px;
-    font-weight: 300;
+.article__body th,
+.article__body td {
+  border: 1px solid var(--rule);
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.55;
 }
 
-td {
-    border: solid 1px;
-    padding: 5px 7px;
+.article__body th {
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
 }
 
-#coverbanner_allprojects {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* --- the currency demo on apis.html ------------------------------------- */
+
+#currencyDiv {
+  margin-top: 28px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: var(--paper);
 }
 
-#coverbanner_allprojects::before {
-    background: url("/projects/static/coding.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
-
-#coverbanner_apis {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#coverbanner_apis::before {
-    background: url("/articles/static/apis.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+#currencyDiv > .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  align-items: end;
+  margin-top: 20px;
 }
 
 #currencyDiv label {
-    display: block;
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-#currencyDiv .row {
-    display: flex;
-    align-items: flex-end;
-    margin: 10px 2px;
+#currencyDiv select,
+#currencyDiv input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ink);
 }
 
-#baseCurrency, #convertedCurrency, #amount {
-    width: 50%;
+#currencyDiv button {
+  width: 100%;
+  padding: 11px 18px;
+  border: 1px solid var(--violet);
+  border-radius: var(--radius);
+  background: var(--violet);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#currencyDiv button:hover { background: #3d0880; }
+
+#currencyDiv #result {
+  grid-column: 1 / -1;
+  border: 0;
+  border-top: 1px dashed var(--dashed);
+  padding-top: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
 }
 
-#result {
-    border: 1px solid #dd1616
+/* --- more articles ------------------------------------------------------ */
+
+.more {
+  margin-top: 88px;
+  max-width: 46rem;
+  border-top: 1px solid var(--ink);
+  padding-top: 28px;
 }
 
-#coverbanner_ai {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.more__head {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
 
-#coverbanner_ai::before {
-    background: url("/articles/static/artificial-intelligence-modeling.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+.more__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--dashed);
 }
 
-#coverbanner_n8n {
-    position: relative;
-    margin-top: 50px;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.more__row a {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.more__row a:hover { color: var(--violet); text-decoration: none; }
+
+.more__topic {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
 }
 
-#coverbanner_n8n::before {
-    background: url("./n8n-gcloud.png") no-repeat;
-    background-size: cover;
-    background-position: center;
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+@media (max-width: 600px) {
+  .article__head { padding-block: 48px 32px; }
+  .article { padding-bottom: 64px; }
+  .subTitle { margin-top: 40px; font-size: 22px; }
+  .bodyText, .listItems, .article__body li { font-size: 16px; }
+  .more { margin-top: 64px; }
+  .more__row { grid-template-columns: 1fr; gap: 6px; }
 }

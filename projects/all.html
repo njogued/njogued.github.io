@@ -3,247 +3,472 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Edward Njogu</title>
+    <meta
+      name="description"
+      content="Projects by Edward Njogu: Sosensus, a Gmail triage agent built on LangGraph and MCP, and earlier full-stack work."
+    />
+    <link rel="canonical" href="https://edwardnjogu.com/projects/all.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
     />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext"
-      rel="stylesheet"
-    />
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    /> -->
-    <title>All Projects</title>
-    <script
-      src="https://unpkg.com/htmx.org@1.9.6"
-      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
-      crossorigin="anonymous"
-    ></script>
-    <link href="/articles/static/styles.css" rel="stylesheet" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/static/favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/static/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/static/favicons/favicon-16x16.png"
-    />
+    <link href="/static/site.css" rel="stylesheet" />
+
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/static/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/static/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Edward Njogu" />
     <link rel="manifest" href="/static/favicons/site.webmanifest" />
   </head>
+
   <body>
-    <div class="container-fluid">
-      <nav class="navbar fixed-top navbar-expand-md">
-        <div class="container-fluid">
-          <a class="navbar-brand mx-5" href="https://njogued.me">
-            <img
-              src="/static/profile_app/njogued_blue.png"
-              alt="njogued"
-              width="58"
-              height="45"
-            />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="brand" href="/" aria-label="Edward Njogu — home">
+          <svg
+            class="brand__mark"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 62 40"
+            aria-hidden="true"
+            focusable="false"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav px-3" style="margin-left: auto">
-              <a class="nav-link px-3 mx-1" href="https://njogued.me">HOME</a>
-              <a class="nav-link px-3 mx-1" href="https://njogued.me/#about"
-                >ABOUT</a
-              >
-              <a class="nav-link px-3 mx-1" href="https://njogued.me/#skills"
-                >SKILLS</a
-              >
-              <a class="nav-link px-3 mx-1" href="https://njogued.me/#projects"
-                >PROJECTS</a
-              >
-              <a class="nav-link px-3 mx-1" href="https://njogued.me/#contact"
-                >CONTACT</a
-              >
-              <a class="nav-link px-3 mx-1" href="https://njogued.me/#articles"
-                >ARTICLES</a
-              >
+            <g transform="translate(0, 40) scale(1, -1)">
+              <path
+                d="M32 10H42C47.5228 10 52 14.4772 52 20C52 25.5228 47.5228 30 42 30H36V28H42C46.4183 28 50 24.4183 50 20C50 15.5817 46.4183 12 42 12H32V22H42C43.1046 22 44 21.1046 44 20C44 18.8954 43.1046 18 42 18H36V16H42C44.2091 16 46 17.7909 46 20C46 22.2091 44.2091 24 42 24H32V34H42C49.732 34 56 27.732 56 20C56 12.268 49.732 6 42 6H36V4H42C50.8366 4 58 11.1634 58 20C58 28.8366 50.8366 36 42 36H32V40H42C53.0457 40 62 31.0457 62 20C62 8.95431 53.0457 0 42 0H32V10Z"
+              />
+              <path
+                d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40H30V30H20C14.4772 30 10 25.5228 10 20C10 14.4772 14.4772 10 20 10H26V12H20C15.5817 12 12 15.5817 12 20C12 24.4183 15.5817 28 20 28H30V18H20C18.8954 18 18 18.8954 18 20C18 21.1046 18.8954 22 20 22H26V24H20C17.7909 24 16 22.2091 16 20C16 17.7909 17.7909 16 20 16H30V6H20C12.268 6 6 12.268 6 20C6 27.732 12.268 34 20 34H26V36H20C11.1634 36 4 28.8366 4 20C4 11.1634 11.1634 4 20 4H30V0H20Z"
+              />
+            </g>
+          </svg>
+          <span class="brand__word">edward njogu</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <a href="/#about">about</a>
+          <a href="/#stack">stack</a>
+          <a href="/#work">work</a>
+          <a href="/#services">services</a>
+          <a href="/#writing">writing</a>
+          <a href="/#contact">contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <div class="page-head">
+          <span class="eyebrow">// projects.all</span>
+          <h1 class="page-title">Projects</h1>
+          <p class="page-lead">
+            What I am building now, and what I built getting here. Current work
+            first; the older full-stack projects are further down, kept because
+            they are where the habits came from.
+          </p>
+        </div>
+
+        <div class="entries">
+          <!-- ============================================================
+               Current
+               ============================================================ -->
+          <article class="entry" id="sosensus">
+            <div class="entry__grid">
+              <div>
+                <span class="status status--building">building</span>
+                <h2 class="entry__title">
+                  <a
+                    href="https://sosensus.vercel.app/"
+                    target="_blank"
+                    rel="noopener"
+                    >Sosensus</a
+                  >
+                </h2>
+                <div class="entry__body">
+                  <p>
+                    A social intelligence layer for teams. Sosensus reads what
+                    is happening across a team's social channels and turns it
+                    into signal an agent can use, rather than another dashboard
+                    someone has to remember to check.
+                  </p>
+                  <p>
+                    The part I find most interesting is the MCP server. Exposing
+                    the intelligence over the Model Context Protocol means an
+                    assistant can query it directly as a tool — so instead of a
+                    person reading a weekly summary and deciding what to do,
+                    the agent can pull the current picture mid-task and act on
+                    it.
+                  </p>
+                  <p>Still in development.</p>
+                </div>
+              </div>
+
+              <dl class="entry__meta">
+                <div>
+                  <dt>status</dt>
+                  <dd>In development</dd>
+                </div>
+                <div>
+                  <dt>role</dt>
+                  <dd>Building it</dd>
+                </div>
+                <div>
+                  <dt>built with</dt>
+                  <dd>MCP, Next.js, LLM integration</dd>
+                </div>
+                <div>
+                  <dt>live at</dt>
+                  <dd>
+                    <a
+                      href="https://sosensus.vercel.app/"
+                      target="_blank"
+                      rel="noopener"
+                      >sosensus.vercel.app</a
+                    >
+                  </dd>
+                </div>
+              </dl>
             </div>
+          </article>
+
+          <article class="entry" id="gmail-triage">
+            <div class="entry__grid">
+              <div>
+                <span class="status status--shipped">open source</span>
+                <h2 class="entry__title">
+                  <a
+                    href="https://github.com/njogued/langchain-agents"
+                    target="_blank"
+                    rel="noopener"
+                    >Gmail triage agent</a
+                  >
+                </h2>
+                <div class="entry__body">
+                  <p>
+                    An agent that works an inbox instead of summarising it.
+                    LangGraph drives the decision loop, the Gmail API supplies
+                    the mail, and a custom MCP server gives the model the tools
+                    to sort, label, and draft.
+                  </p>
+                  <p>
+                    Building the tools as an MCP server rather than wiring them
+                    into the agent directly means the same toolset works with
+                    any MCP-capable client, and the triage logic stays separate
+                    from the mail plumbing. That separation is the reason the
+                    project is worth reading.
+                  </p>
+                  <p>
+                    The source is on GitHub, along with the other agent
+                    experiments in the same repository.
+                  </p>
+                </div>
+              </div>
+
+              <dl class="entry__meta">
+                <div>
+                  <dt>status</dt>
+                  <dd>Open source</dd>
+                </div>
+                <div>
+                  <dt>role</dt>
+                  <dd>Sole author</dd>
+                </div>
+                <div>
+                  <dt>built with</dt>
+                  <dd>LangChain, LangGraph, OpenAI, Gmail API, MCP</dd>
+                </div>
+                <div>
+                  <dt>source</dt>
+                  <dd>
+                    <a
+                      href="https://github.com/njogued/langchain-agents"
+                      target="_blank"
+                      rel="noopener"
+                      >njogued/langchain-agents</a
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <!-- ============================================================
+               Earlier
+               ============================================================ -->
+          <article class="entry" id="servlist">
+            <div class="entry__grid">
+              <div>
+                <span class="cell__index">earlier</span>
+                <h2 class="entry__title">
+                  <a
+                    href="https://github.com/njogued/servlist-web-App"
+                    target="_blank"
+                    rel="noopener"
+                    >Servlist</a
+                  >
+                </h2>
+                <div class="entry__body">
+                  <p>
+                    A two-week full-stack build for the ALX Software
+                    Engineering program. Servlist let small business owners
+                    publish a profile of their goods and services to get more
+                    visibility.
+                  </p>
+                  <p>
+                    No longer under development — the team moved on to
+                    competing priorities.
+                  </p>
+                </div>
+              </div>
+
+              <dl class="entry__meta">
+                <div>
+                  <dt>status</dt>
+                  <dd>Archived</dd>
+                </div>
+                <div>
+                  <dt>built with</dt>
+                  <dd>Django, SQLite, Bootstrap, JavaScript</dd>
+                </div>
+                <div>
+                  <dt>hosting</dt>
+                  <dd>Render, Gunicorn</dd>
+                </div>
+                <div>
+                  <dt>source</dt>
+                  <dd>
+                    <a
+                      href="https://github.com/njogued/servlist-web-App"
+                      target="_blank"
+                      rel="noopener"
+                      >njogued/servlist-web-App</a
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="entry" id="servicemtaani">
+            <div class="entry__grid">
+              <div>
+                <span class="cell__index">earlier</span>
+                <h2 class="entry__title">
+                  <a
+                    href="https://github.com/njogued/ServiceMtaani-Vercel"
+                    target="_blank"
+                    rel="noopener"
+                    >ServiceMtaani</a
+                  >
+                </h2>
+                <div class="entry__body">
+                  <p>
+                    Another two-week ALX build, connecting auto-mechanics,
+                    parts sellers, and car owners. Owners listed repair jobs,
+                    mechanics bid on them, and sellers listed parts.
+                  </p>
+                  <p>
+                    It ran at servicemtaani.me for about three months until the
+                    Google Cloud trial expired. No longer under development.
+                  </p>
+                </div>
+              </div>
+
+              <dl class="entry__meta">
+                <div>
+                  <dt>status</dt>
+                  <dd>Archived</dd>
+                </div>
+                <div>
+                  <dt>built with</dt>
+                  <dd>Flask, MySQL, jQuery, Bootstrap</dd>
+                </div>
+                <div>
+                  <dt>hosting</dt>
+                  <dd>Google Cloud, Nginx, Gunicorn</dd>
+                </div>
+                <div>
+                  <dt>source</dt>
+                  <dd>
+                    <a
+                      href="https://github.com/njogued/ServiceMtaani-Vercel"
+                      target="_blank"
+                      rel="noopener"
+                      >njogued/ServiceMtaani-Vercel</a
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="entry" id="portfolio">
+            <div class="entry__grid">
+              <div>
+                <span class="cell__index">earlier</span>
+                <h2 class="entry__title">This site</h2>
+                <div class="entry__body">
+                  <p>
+                    Hand-written static HTML and CSS, served from GitHub Pages.
+                    No framework and no build step — every page is a file you
+                    can open.
+                  </p>
+                  <p>Continuously under development.</p>
+                </div>
+              </div>
+
+              <dl class="entry__meta">
+                <div>
+                  <dt>status</dt>
+                  <dd>Ongoing</dd>
+                </div>
+                <div>
+                  <dt>built with</dt>
+                  <dd>HTML, CSS, vanilla JavaScript</dd>
+                </div>
+                <div>
+                  <dt>hosting</dt>
+                  <dd>GitHub Pages</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="entry" id="other">
+            <div class="entry__grid">
+              <div>
+                <span class="cell__index">earlier</span>
+                <h2 class="entry__title">Other projects</h2>
+                <div class="entry__body">
+                  <p>Smaller builds and experiments.</p>
+                </div>
+
+                <div class="subentries">
+                  <div class="subentry">
+                    <h3>Bookclub</h3>
+                    <p>
+                      A Node project for sharing books, built on Express and
+                      MongoDB. Still under development.
+                    </p>
+                  </div>
+                  <div class="subentry">
+                    <h3>Chrome extension</h3>
+                    <p>
+                      Scrapes form data from one site, stores it in browser
+                      storage, and fills matching forms on another.
+                    </p>
+                  </div>
+                  <div class="subentry">
+                    <h3>REST APIs</h3>
+                    <p>
+                      A Django API for user CRUD, and a Flask API that serves a
+                      file for download and then deletes it.
+                    </p>
+                  </div>
+                  <div class="subentry">
+                    <h3>Web automation</h3>
+                    <p>A bidding script written with Playwright.</p>
+                  </div>
+                  <div class="subentry">
+                    <h3>Simple shell</h3>
+                    <p>
+                      A command-line interpreter for Unix-like systems, written
+                      in C.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <dl class="entry__meta">
+                <div>
+                  <dt>built with</dt>
+                  <dd>Node, Express, MongoDB, Django, Flask, Playwright, C</dd>
+                </div>
+                <div>
+                  <dt>source</dt>
+                  <dd>
+                    <a
+                      href="https://github.com/njogued"
+                      target="_blank"
+                      rel="noopener"
+                      >github.com/njogued</a
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <a class="backlink" href="/#work">// back to the landing page</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="foot__grid">
+          <div>
+            <a class="brand brand--dark" href="/" aria-label="Edward Njogu — home">
+              <svg
+                class="brand__mark"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 62 40"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <g transform="translate(0, 40) scale(1, -1)">
+                  <path
+                    d="M32 10H42C47.5228 10 52 14.4772 52 20C52 25.5228 47.5228 30 42 30H36V28H42C46.4183 28 50 24.4183 50 20C50 15.5817 46.4183 12 42 12H32V22H42C43.1046 22 44 21.1046 44 20C44 18.8954 43.1046 18 42 18H36V16H42C44.2091 16 46 17.7909 46 20C46 22.2091 44.2091 24 42 24H32V34H42C49.732 34 56 27.732 56 20C56 12.268 49.732 6 42 6H36V4H42C50.8366 4 58 11.1634 58 20C58 28.8366 50.8366 36 42 36H32V40H42C53.0457 40 62 31.0457 62 20C62 8.95431 53.0457 0 42 0H32V10Z"
+                  />
+                  <path
+                    d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40H30V30H20C14.4772 30 10 25.5228 10 20C10 14.4772 14.4772 10 20 10H26V12H20C15.5817 12 12 15.5817 12 20C12 24.4183 15.5817 28 20 28H30V18H20C18.8954 18 18 18.8954 18 20C18 21.1046 18.8954 22 20 22H26V24H20C17.7909 24 16 22.2091 16 20C16 17.7909 17.7909 16 20 16H30V6H20C12.268 6 6 12.268 6 20C6 27.732 12.268 34 20 34H26V36H20C11.1634 36 4 28.8366 4 20C4 11.1634 11.1634 4 20 4H30V0H20Z"
+                  />
+                </g>
+              </svg>
+              <span class="brand__word">edward njogu</span>
+            </a>
+            <p class="foot__blurb">
+              AI automation and n8n development. Workflows built to run without
+              you watching them.
+            </p>
+          </div>
+
+          <div class="foot__col">
+            <h2 class="foot__head">Site</h2>
+            <ul>
+              <li><a href="/#about">About</a></li>
+              <li><a href="/#stack">Stack</a></li>
+              <li><a href="/#work">Work</a></li>
+              <li><a href="/#services">Services</a></li>
+              <li><a href="/#writing">Writing</a></li>
+            </ul>
+          </div>
+
+          <div class="foot__col">
+            <h2 class="foot__head">Elsewhere</h2>
+            <ul>
+              <li><a href="https://github.com/njogued" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/edward-njogu/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="mailto:njogued@gmail.com">Email</a></li>
+            </ul>
           </div>
         </div>
-      </nav>
-      <section id="coverbanner_allprojects"></section>
-      <div class="container">
-        <h2 id="article-title">Projects</h2>
-        <p class="bodyText">Here are some of the projects I've worked on:</p>
-        <h5 class="subTitle" id="servlist">
-          <a href="https://github.com/njogued/servlist-web-App" target="_blank"
-            >Servlist</a
-          >
-        </h5>
-        <p class="bodyText">
-          Servlist was a two-week full-stack web application project created as
-          part of the requirements for completion of the ALX Software
-          Engineering program. The servlist platform was meant for small
-          business owners to create a comprehensive profile of their goods and
-          services, thus offering them greater visibility. <br />Development
-          technologies:
-          <strong>Django, SQLite, HTML, CSS, Bootstrap, JavaScript.</strong
-          ><br />
-          Hosting and serving:
-          <strong
-            ><a href="https://render.com/" target="_blank">render</a>,
-            Gunicorn.</strong
-          ><br />
-          The project is available at
-          <a href="https://servlist.onrender.com/" target="_blank"
-            >servlist.onrender.com</a
-          >.<br />
-          However, due to competing priorities by team members, the project is
-          no longer under development.
-        </p>
-        <h5 class="subTitle" id="servicemtaani">
-          <a
-            href="https://github.com/njogued/ServiceMtaani-Vercel"
-            target="_blank"
-            >ServiceMtaani</a
-          >
-        </h5>
-        <p class="bodyText">
-          ServiceMtaani was a two-week full-stack web application project
-          created as part of the requirements for completion of the ALX Software
-          Engineering program. The ServiceMtaani platform was meant to connect
-          auto-mechanics, parts sellers, and car owners. Car owners could list
-          repair jobs on the platform, auto-mechanics could bid for the jobs,
-          and parts sellers could list parts for sale on the platform.
-          <br />Development technologies:
-          <strong>Flask, MySQL, HTML, CSS, jQuery, Bootstrap.</strong>
-          <br />Hosting and serving:
-          <strong>Google Cloud, Nginx, Gunicorn.</strong><br />The project was
-          accessible at servicemtaani.me for about three months, after which the
-          Google Cloud free trial period expired. Due to competing priorities by
-          team members, the project is no longer under development.
-        </p>
-        <h5 class="subTitle" id="portfolio">Portfolio website</h5>
-        <p class="bodyText">
-          My portfolio website is meant to showcase my profile and highlight my
-          interests. <br />
-          Development Technologies:
-          <strong>HTML, CSS, Bootstrap, JavaScript.</strong><br />
-          Hosting: <strong>Github Pages.</strong><br />
-          The project is continuously under development.
-        </p>
-        <h5 class="subTitle" id="other">Other Projects</h5>
-        <div class="bodyText">
-          <h5>Bookclub:</h5>
-          <ul>
-            <li>
-              A NodeJS project created to enable book sharing. The project uses
-              ExpressJS, Bootstrap, MongoDB, HTML & CSS. The project is still
-              under development.
-            </li>
-          </ul>
 
-          <h5>Chrome Extensions:</h5>
-          <ul>
-            <li>
-              A chrome extension to scrape form data from one website, store the
-              data in the browser storage, and fill the data in forms on a
-              different website.
-            </li>
-          </ul>
-
-          <h5>REST APIs:</h5>
-          <ul>
-            <li>
-              A Django API to CRUD users and a Flask API to download files from
-              a server and then delete the sent file.
-            </li>
-          </ul>
-
-          <h5>Web Automation (Playwright):</h5>
-          <ul>
-            <li>
-              A bidding script built using JavaScript’s playwright library.
-            </li>
-          </ul>
-
-          <h5>Simple Shell:</h5>
-          <ul>
-            <li>
-              A command-line interpreter or shell that provides a command line
-              user interface for Unix-like operating systems. Built using C.
-            </li>
-          </ul>
+        <div class="foot__meta">
+          <span>© <span id="year">2026</span> Edward Njogu</span>
+          <span>edwardnjogu.com · Nairobi, KE</span>
         </div>
-        <p class="bodyText">Happy coding!</p>
       </div>
+    </footer>
 
-      <footer class="py-3 mt-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item">
-            <a
-              href="https://njogued.me"
-              class="nav-link px-2 text-body-secondary"
-              >Home</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="https://njogued.me/#about"
-              class="nav-link px-2 text-body-secondary"
-              >About</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="https://njogued.me/#skills"
-              class="nav-link px-2 text-body-secondary"
-              >Skills</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="https://njogued.me/#projects"
-              class="nav-link px-2 text-body-secondary"
-              >Projects</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="https://njogued.me/#contact"
-              class="nav-link px-2 text-body-secondary"
-              >Contact</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="https://njogued.me/#articles"
-              class="nav-link px-2 text-body-secondary"
-              >Articles</a
-            >
-          </li>
-        </ul>
-        <p class="text-center text-body-secondary">
-          © 2023, https://njogued.me
-        </p>
-      </footer>
-    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
