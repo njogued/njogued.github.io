@@ -146,11 +146,17 @@ python3 -m http.server 8000   # then http://localhost:8000
   AI expertise.
 - The hero promises a reply "within 1 working day" — a commitment, not a
   placeholder.
-- **Orphaned assets** (tracked, unreferenced, safe to delete): `static/styles.css`,
-  `static/grad.jpg`, `static/welcome.jpg`, `static/chatbot1.png`,
-  `static/profile_app/njogued_blue.png`, `static/ed-site-logo.png`,
-  `projects/static/coding.jpg`, and the seven images in `articles/static/`
-  (~1.1MB) left over from the removed cover banners.
+- **Orphaned assets**, tracked but unreferenced by any live page — delete
+  together, since some only reference each other:
+  - `static/styles.css` (the legacy stylesheet; the *only* thing still pointing
+    at `static/welcome.jpg`, so both go together)
+  - `static/grad.jpg`, `static/chatbot1.png`,
+    `static/profile_app/njogued_blue.png`, `static/ed-site-logo.png`
+    (the PNG logo — `ed-site.svg` is the live source and must stay)
+  - all five `projects/static/*` screenshots, unused since project cards became
+    text-only
+  - all seven `articles/static/*` images (~1.1MB), left over from the removed
+    cover banners
 - No SPF/DMARC records on the domain, so `edwardnjogu.com` can currently be
   spoofed. Worth adding whether or not email is set up.
 - `profile/Edward_Njogu_Resume.pdf` is deleted but remains in git history
