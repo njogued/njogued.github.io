@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>n8n Pro-Tips — 21 failure modes, free — Edward Njogu</title>
+    <meta
+      name="description"
+      content="A free reference for intermediate n8n practitioners: 21 failure modes from production workflow automation and the fixes that actually worked. Claude Skill or PDF. No email required."
+    />
+    <link rel="canonical" href="https://edwardnjogu.com/n8n-pro-tips/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://edwardnjogu.com/n8n-pro-tips/" />
+    <meta property="og:site_name" content="Edward Njogu" />
+    <meta property="og:title" content="n8n Pro-Tips — 21 failure modes, free" />
+    <meta
+      property="og:description"
+      content="Most n8n failures do not throw errors. The run shows green and the data is quietly wrong. 21 of those, written down. Claude Skill or PDF, no email required."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="n8n Pro-Tips — 21 failure modes, free" />
+    <meta
+      name="twitter:description"
+      content="Most n8n failures do not throw errors. The run shows green and the data is quietly wrong. 21 of those, written down."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/static/site.css" rel="stylesheet" />
+
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/static/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/static/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Edward Njogu" />
+    <link rel="manifest" href="/static/favicons/site.webmanifest" />
+
+    <!-- ==================================================================
+         Page-scoped styles. Everything here builds on the tokens and
+         components in /static/site.css — no new colours, no new fonts, no
+         external dependencies. Scoped to .asset-* so it cannot leak into
+         the rest of the site.
+         ================================================================== -->
+    <style>
+      /* The site's default .band is 120px of vertical padding, which would
+         push the second download below the fold. This page trades that for a
+         tighter hero: the whole job of the page is the two buttons. */
+      .asset-hero {
+        padding-block: 56px 72px;
+      }
+
+      .asset-title {
+        font-size: clamp(38px, 6.4vw, 64px);
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+
+      .asset-lede {
+        margin-top: 22px;
+        max-width: 52ch;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      /* Download cluster --------------------------------------------------
+         Primary (zip) and secondary (PDF) sit on one row on desktop and
+         stack full-width under 600px — site.css already sets
+         .btn--primary/.btn--ghost to width:100% at that breakpoint. */
+      .asset-downloads {
+        margin-top: 36px;
+      }
+
+      .asset-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .asset-buttons .btn--primary {
+        font-size: 17px;
+      }
+
+      /* Each button carries a mono sub-label so the choice is legible at a
+         glance without reading the button copy twice. */
+      .asset-btn-sub {
+        display: block;
+        margin-top: 5px;
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        opacity: 0.72;
+      }
+
+      /* Trust row — dashed hairlines, per DESIGN.md, to read as a meta row
+         rather than another content block. */
+      .asset-trust {
+        margin-top: 28px;
+        max-width: 62ch;
+        border-top: 1px dashed var(--dashed);
+        border-bottom: 1px dashed var(--dashed);
+        padding-block: 13px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        font-family: var(--mono);
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      .asset-trust span::before {
+        content: "· ";
+        color: var(--rule);
+      }
+      .asset-trust span:first-child::before {
+        content: "";
+      }
+
+      /* The "know what you're installing" line. It stays above the fold on
+         purpose — it is not a footnote. */
+      .asset-source {
+        margin-top: 18px;
+        max-width: 58ch;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--body-text);
+      }
+
+      .asset-source a {
+        font-weight: 500;
+      }
+
+      /* Covers list — shared hairlines with mono indices, matching the
+         table-like card treatment used elsewhere on the site. Not bullets. */
+      .asset-list {
+        border-top: 1px solid var(--rule);
+        max-width: 74ch;
+      }
+
+      .asset-list li {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 20px;
+        align-items: baseline;
+        padding: 16px 0;
+        border-bottom: 1px dashed var(--dashed);
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--ink);
+      }
+
+      .asset-list li::before {
+        content: counter(asset-idx, decimal-leading-zero);
+        counter-increment: asset-idx;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .asset-list {
+        counter-reset: asset-idx;
+      }
+
+      /* Install rows */
+      .asset-install {
+        border-top: 1px solid var(--rule);
+        max-width: 74ch;
+      }
+
+      .asset-install > div {
+        display: grid;
+        grid-template-columns: 148px 1fr;
+        gap: 24px;
+        padding: 20px 0;
+        border-bottom: 1px dashed var(--dashed);
+        align-items: baseline;
+      }
+
+      .asset-install dt {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--ink);
+      }
+
+      .asset-install dd {
+        margin: 0;
+        font-size: 15.5px;
+        line-height: 1.6;
+      }
+
+      .asset-install code,
+      .asset-note code {
+        font-family: var(--mono);
+        font-size: 0.88em;
+        background: var(--violet-wash);
+        color: var(--violet);
+        padding: 2px 6px;
+        border-radius: var(--radius);
+      }
+
+      .asset-note {
+        margin-top: 26px;
+        max-width: 66ch;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      /* Body copy for the prose sections */
+      .asset-body {
+        max-width: 62ch;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .asset-body p + p {
+        margin-top: 18px;
+      }
+
+      /* Compact footer — the full site footer is three columns of links,
+         which is more exit than a single-job landing page wants. */
+      .asset-foot {
+        padding-block: 40px 36px;
+      }
+
+      .asset-foot .foot__meta {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      /* Section headings on this page are smaller than the landing page's
+         56px — this is a document, not a pitch. */
+      .asset-h2 {
+        font-size: clamp(26px, 3.4vw, 34px);
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+      }
+
+      .asset-sec {
+        padding-block: 72px;
+      }
+
+      @media (max-width: 600px) {
+        .asset-hero {
+          padding-block: 28px 48px;
+        }
+        /* Every pixel here is fold budget on a 375x667 viewport. */
+        .asset-buttons .btn--primary,
+        .asset-buttons .btn--ghost {
+          padding-block: 16px;
+        }
+        .asset-btn-sub {
+          margin-top: 3px;
+          font-size: 10.5px;
+        }
+        .asset-trust {
+          margin-top: 22px;
+        }
+        .asset-sec {
+          padding-block: 52px;
+        }
+        .asset-lede {
+          font-size: 16.5px;
+        }
+        .asset-downloads {
+          margin-top: 28px;
+        }
+        .asset-install > div {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        .asset-list li {
+          grid-template-columns: 32px 1fr;
+          gap: 12px;
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Brand-only nav. Six nav links on a page with one job compete with
+         the download, and on a 375px viewport they wrap to a second row and
+         eat the fold. -->
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="brand" href="/" aria-label="Edward Njogu — home">
+          <svg
+            class="brand__mark"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 62 40"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <g transform="translate(0, 40) scale(1, -1)">
+              <path
+                d="M32 10H42C47.5228 10 52 14.4772 52 20C52 25.5228 47.5228 30 42 30H36V28H42C46.4183 28 50 24.4183 50 20C50 15.5817 46.4183 12 42 12H32V22H42C43.1046 22 44 21.1046 44 20C44 18.8954 43.1046 18 42 18H36V16H42C44.2091 16 46 17.7909 46 20C46 22.2091 44.2091 24 42 24H32V34H42C49.732 34 56 27.732 56 20C56 12.268 49.732 6 42 6H36V4H42C50.8366 4 58 11.1634 58 20C58 28.8366 50.8366 36 42 36H32V40H42C53.0457 40 62 31.0457 62 20C62 8.95431 53.0457 0 42 0H32V10Z"
+              />
+              <path
+                d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40H30V30H20C14.4772 30 10 25.5228 10 20C10 14.4772 14.4772 10 20 10H26V12H20C15.5817 12 12 15.5817 12 20C12 24.4183 15.5817 28 20 28H30V18H20C18.8954 18 18 18.8954 18 20C18 21.1046 18.8954 22 20 22H26V24H20C17.7909 24 16 22.2091 16 20C16 17.7909 17.7909 16 20 16H30V6H20C12.268 6 6 12.268 6 20C6 27.732 12.268 34 20 34H26V36H20C11.1634 36 4 28.8366 4 20C4 11.1634 11.1634 4 20 4H30V0H20Z"
+              />
+            </g>
+          </svg>
+          <span class="brand__word">edward njogu</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="asset-page">
+      <!-- ================================================================
+           Fold: heading, lede, both downloads, and the "know what you're
+           installing" line. Nothing below this needs to be read to download.
+           ================================================================ -->
+      <section class="band asset-hero">
+        <div class="wrap">
+          <header>
+            <span class="eyebrow">// resource.free</span>
+            <h1 class="asset-title">n8n Pro-Tips</h1>
+            <p class="asset-lede">
+              21 failure modes I hit building production n8n workflows, and what
+              actually fixed them. Written for people who have already shipped a
+              few workflows.
+            </p>
+          </header>
+
+          <section class="downloads asset-downloads" aria-label="Download">
+            <div class="asset-buttons">
+              <a
+                class="btn btn--primary"
+                href="/assets/n8n-pro-tips-skill.zip"
+                download
+                data-download="skill"
+              >
+                Download as a Claude Skill
+                <span class="asset-btn-sub">.zip · claude.ai or Claude Code</span>
+              </a>
+
+              <a
+                class="btn btn--ghost"
+                href="/assets/n8n-pro-tips.pdf"
+                download="n8n-pro-tips.pdf"
+                data-download="pdf"
+              >
+                Download the PDF
+                <span class="asset-btn-sub">.pdf · read it anywhere</span>
+              </a>
+            </div>
+
+            <p class="asset-trust note">
+              <span>no email</span>
+              <span>no signup</span>
+              <span>21 entries</span>
+              <span>markdown, no scripts</span>
+            </p>
+
+            <p class="asset-source">
+              Don't install a stranger's skill blind. Nothing in it executes,
+              and the PDF is the same 21 entries &mdash;
+              <a href="/assets/n8n-pro-tips.pdf" data-download="pdf-preview"
+                >read it in your browser first</a
+              >.
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <section class="band band--paper asset-sec why">
+        <div class="wrap">
+          <span class="eyebrow">// why.exists</span>
+          <h2 class="asset-h2">Why this exists</h2>
+          <div class="asset-body" style="margin-top: 24px">
+            <p>
+              Most n8n failures do not throw errors. The workflow completes, the
+              execution shows green, and the data is quietly wrong. Every time
+              that happened, I wrote down what the error message did not
+              explain.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <section class="band asset-sec covers">
+        <div class="wrap">
+          <span class="eyebrow">// covers</span>
+          <h2 class="asset-h2">What it covers</h2>
+          <ul class="asset-list" style="margin-top: 32px">
+            <li>Loops, nested loops, and recursive sub-workflows</li>
+            <li>Item linking and data flow through Code nodes</li>
+            <li>Merge node modes, branching, and error handling</li>
+            <li>Binary data and HTTP file responses</li>
+            <li>Supabase, PostgREST, and Postgres connection pooling</li>
+            <li>Gemini schema limits and OpenRouter model fallbacks</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <section class="band band--paper asset-sec install">
+        <div class="wrap">
+          <span class="eyebrow">// install</span>
+          <h2 class="asset-h2">Installing the skill</h2>
+
+          <dl class="asset-install" style="margin-top: 32px">
+            <div>
+              <dt>claude.ai</dt>
+              <dd>
+                Customize &rarr; Skills &rarr; "+" &rarr; Create skill &rarr;
+                upload the zip &rarr; toggle on. Requires code execution
+                enabled.
+              </dd>
+            </div>
+            <div>
+              <dt>Claude Code</dt>
+              <dd>
+                Unzip into <code>~/.claude/skills/</code> for personal use, or
+                <code>.claude/skills/</code> inside a project.
+              </dd>
+            </div>
+          </dl>
+
+          <p class="asset-note source">
+            Not using Claude? The PDF has the same content and needs no setup.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot asset-foot">
+      <div class="wrap">
+        <div class="foot__meta">
+          <span>Edward Njogu &middot; <a href="/">edwardnjogu.com</a></span>
+          <span>&copy; <span id="year">2026</span> &middot; Nairobi, KE</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      /* ------------------------------------------------------------------
+         Download click tracking.
+         Vendor-neutral on purpose: a `download` link does not navigate, so
+         nothing fires a pageview when someone takes the file. This pushes to
+         dataLayer and calls gtag() only if a tag is actually on the page, so
+         it is a safe no-op until GA (or anything else) is installed.
+         ------------------------------------------------------------------ */
+      (function () {
+        document.addEventListener(
+          "click",
+          function (event) {
+            var link = event.target.closest("[data-download]");
+            if (!link) return;
+
+            var payload = {
+              asset: link.getAttribute("data-download"),
+              file: link.getAttribute("href"),
+              page: "n8n-pro-tips",
+            };
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(
+              Object.assign({ event: "asset_download" }, payload)
+            );
+
+            if (typeof window.gtag === "function") {
+              window.gtag("event", "asset_download", payload);
+            }
+          },
+          false
+        );
+      })();
+    </script>
+  </body>
+</html>
