@@ -784,12 +784,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: start;
 }
 
-.contact__lead { margin-top: 0; }
-
-/* The mail link is the section's one action, so it gets a slab of its own
-   rather than floating under the paragraph. */
+/* The mail link is the section's one action, so it gets a slab of its own.
+   No top margin: its rule has to line up with the first rule of the meta
+   list in the column beside it. */
 .contact__cta {
-  margin-top: 40px;
   border-top: 1px solid var(--ink-border);
   border-bottom: 1px solid var(--ink-border);
   padding-block: 24px;
@@ -826,6 +824,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .contact__mail:hover { color: var(--violet-lift); text-decoration: none; }
 
 .contact__list {
+  /* <dl> carries a UA top margin; it has to go, or this column's first rule
+     sits below the mail slab's rule beside it. */
+  margin: 0;
   border-top: 1px solid var(--ink-border);
 }
 
