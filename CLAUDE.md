@@ -60,8 +60,10 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 │   └── static/styles.css       # Long-form typography, loads ON TOP of site.css
 │
 └── projects/
-    └── all.html                # Detail page, anchored: #sosensus, #gmail-triage,
-                                #   #servlist, #servicemtaani, #portfolio, #other
+    ├── index.html              # Detail page at /projects/, anchored: #sosensus,
+    │                           #   #gmail-triage, #light-crm, #servlist,
+    │                           #   #servicemtaani, #portfolio, #other
+    └── all.html                # Redirect stub → /projects/ (the old URL)
 ```
 
 `profile/` was deleted (both `xp.html` and the stale resume copy).
@@ -70,7 +72,7 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 
 - `index.html` is the entry point; nav and footer link to in-page anchors
   (`#about`, `#stack`, `#work`, `#services`, `#writing`, `#contact`).
-- Work cards deep-link to `projects/all.html#<anchor>`. **Every project card
+- Work cards deep-link to `projects/#<anchor>`. **Every project card
   follows the same path: card → detail page → external link.** External URLs
   live in the detail page's metadata table, not on the landing card.
 - Writing cards link to `articles/*.html`; LinkedIn posts link out directly.
@@ -82,7 +84,7 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 | Page | Loads |
 |---|---|
 | `index.html` | `static/site.css` |
-| `projects/all.html` | `/static/site.css` |
+| `projects/index.html` | `/static/site.css` |
 | `articles/*.html` | `/static/site.css` **then** `/articles/static/styles.css` |
 
 `static/site.css` owns the `:root` tokens. Never hardcode a colour — reference
