@@ -25,7 +25,10 @@ Pushing to `main` is a live deploy. There is no staging environment.
 
 - **HTML5**, hand-authored, one file per page.
 - **CSS3**, two custom stylesheets, no preprocessor.
-- **Geist + Geist Mono** from Google Fonts — the only remaining CDN dependency.
+- **Geist + Geist Mono** from Google Fonts — one of two external dependencies.
+- **Google Analytics 4** (`gtag.js`, property `G-7JGV5WLQPR`) — the other. The
+  snippet sits just before `</head>` on every page, `articles/base.html`
+  included, so new articles inherit it. Added August 2026.
 - **Vanilla JS**, one three-line inline script per page (dynamic footer year),
   plus the currency-converter demo on `articles/apis.html`.
 
