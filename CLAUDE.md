@@ -43,9 +43,22 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 │                               #   03 work, 04 services, 05 writing, 06 contact
 ├── CNAME                       # edwardnjogu.com
 ├── robots.txt, sitemap.xml     # SEO — sitemap uses real publication dates
-├── edward-njogu-resume.pdf     # Public resume (linked from contact)
+├── resume.pdf                  # Public resume (linked from contact)
+├── favicon.ico                 # Root fallback for crawlers that ignore <link>
+├── feed.xml                    # RSS 2.0 for the six articles
+├── llms.txt                    # Plain-text site summary for AI crawlers
 ├── DESIGN.md                   # Visual system — read before any UI work
 ├── SITE-ANALYSIS-AND-RECOMMENDATIONS.md   # Positioning gap analysis
+│
+├── n8n-pro-tips/
+│   └── index.html              # Lead magnet: 21 n8n failure modes, free.
+│                               #   sitemap priority 0.90 — the most-shared URL
+│                               #   after the landing page. Linked twice from
+│                               #   index.html. Easy to miss in sitewide passes:
+│                               #   it is neither an article nor a project.
+├── assets/
+│   ├── n8n-pro-tips.pdf        # The lead magnet, PDF form
+│   └── n8n-pro-tips-skill.zip  # The same, as a Claude Skill
 │
 ├── static/
 │   ├── site.css                # THE design system (~980 lines): tokens, nav,
@@ -109,9 +122,32 @@ the variable.
 - **New article:** copy `articles/base.html`; replace title, meta description,
   canonical, eyebrow topic, date, and reading time; write the body; then add a
   card to the Writing section of `index.html`, a `<url>` to `sitemap.xml`, and a
-  row to the "more writing" list in every other article. `SLUG` appears twice
-  in the template — the canonical *and* `og:url` — so replace both. The OG
-  image and card type are inherited; leave them alone.
+  row to the "more writing" list in every other article, an `<item>` to
+  `feed.xml`, and a line to `llms.txt`. In the template, replace **`SLUG`
+  everywhere** (canonical, `og:url`, and both JSON-LD blocks) and
+  **`YYYY-MM-DD` everywhere** (`article:published_time`, the `<time datetime>`,
+  and `datePublished`). The OG image and card type are inherited; leave them
+  alone.
+
+## Page metadata
+
+Every page carries the same head contract. When adding a page, copy it whole:
+
+- `og:type`, `og:url` (**must equal the canonical** — LinkedIn caches on
+  `og:url`, not canonical), `og:site_name`, `og:title`, `og:description`
+- `og:image` → `/static/og-image.png` with width/height/alt, and
+  `twitter:card="summary_large_image"`. One shared card sitewide, deliberately.
+- A feed autodiscovery `<link>` to `/feed.xml`
+- JSON-LD: `Person` on the landing page, `BlogPosting` + `BreadcrumbList` on
+  articles, `CollectionPage` + `BreadcrumbList` on `/projects/`
+
+Article dates live in three places that must agree: the visible
+`<time datetime>`, `article:published_time`, and JSON-LD `datePublished` —
+plus `<lastmod>` in `sitemap.xml` and `<pubDate>` in `feed.xml`.
+
+**`/n8n-pro-tips/` is not under `articles/`.** Any sitewide head change has to
+touch it explicitly or it silently falls behind — this has already happened
+once.
 
 ## Design system
 

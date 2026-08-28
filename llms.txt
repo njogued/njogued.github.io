@@ -1,0 +1,28 @@
+# Edward Njogu
+
+> AI automation and n8n developer based in Nairobi, Kenya. Builds production
+> workflow automation: n8n workflows, RAG pipelines on pgvector, and LLM
+> integrations with Supabase, Slack, and third-party APIs.
+
+Contact: njogued@gmail.com
+Site: https://edwardnjogu.com
+
+## Pages
+
+- [Home](https://edwardnjogu.com/): About, stack, work, services, writing, contact.
+- [Projects](https://edwardnjogu.com/projects/): Sosensus, a Gmail triage agent on LangGraph and MCP, Light CRM, and earlier full-stack work.
+- [n8n Pro-Tips](https://edwardnjogu.com/n8n-pro-tips/): Free reference covering 21 production n8n failure modes and their fixes. Available as a Claude Skill or PDF, no email required.
+
+## Writing
+
+- [A practical guide to self-hosting n8n with Docker](https://edwardnjogu.com/articles/n8n-self-hosting-docker.html): Self-hosting n8n for control over data, cost, and extensibility. 2025-10-22.
+- [Three AI technologies worth watching](https://edwardnjogu.com/articles/ai-2024.html): A 2024 predictions piece. 2023-12-17.
+- [All about APIs, with a practical example](https://edwardnjogu.com/articles/apis.html): How APIs work, with a live currency-converter demo. 2023-12-10.
+- [Getting started with Chrome extensions](https://edwardnjogu.com/articles/chrome-extensions.html): Building a first Chrome extension. 2023-12-02.
+- [Navigating the basics of pandas](https://edwardnjogu.com/articles/pandas-intro.html): An introduction to pandas for data work. 2023-11-20.
+- [Five lessons from shipping a software project](https://edwardnjogu.com/articles/dev-lessons.html): Lessons learned delivering a project end to end. 2023-11-04.
+
+## Notes
+
+- Client automation work is under NDA; the site does not publish client metrics.
+- Email is the only direct contact channel, alongside GitHub and LinkedIn.

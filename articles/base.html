@@ -12,6 +12,9 @@
 
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://edwardnjogu.com/articles/SLUG.html" />
+    <meta property="og:site_name" content="Edward Njogu" />
+    <meta property="article:published_time" content="YYYY-MM-DD" />
+    <meta property="article:author" content="Edward Njogu" />
     <meta property="og:title" content="Article title" />
     <meta property="og:description" content="One-sentence summary of the article." />
     <meta
@@ -25,6 +28,8 @@
       content="Edward Njogu — AI automation &amp; n8n developer"
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="alternate" type="application/rss+xml" title="Edward Njogu — Writing" href="/feed.xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,6 +46,57 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Edward Njogu" />
     <link rel="manifest" href="/static/favicons/site.webmanifest" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Article title",
+        "description": "One-sentence summary of the article.",
+        "datePublished": "YYYY-MM-DD",
+        "url": "https://edwardnjogu.com/articles/SLUG.html",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://edwardnjogu.com/articles/SLUG.html"
+        },
+        "image": "https://edwardnjogu.com/static/og-image.png",
+        "author": {
+          "@type": "Person",
+          "name": "Edward Njogu",
+          "url": "https://edwardnjogu.com/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Edward Njogu",
+          "url": "https://edwardnjogu.com/"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://edwardnjogu.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Writing",
+            "item": "https://edwardnjogu.com/#writing"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Article title",
+            "item": "https://edwardnjogu.com/articles/SLUG.html"
+          }
+        ]
+      }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JGV5WLQPR"></script>
     <script>
@@ -94,7 +150,7 @@
           <span class="eyebrow">// writing.TOPIC</span>
           <h1 class="article__title">Article title</h1>
           <div class="article__meta">
-            <span>Mon 00, 2026</span>
+            <time datetime="YYYY-MM-DD">Mon 00, 2026</time>
             <span>0 min read</span>
             <span>TOPIC</span>
           </div>

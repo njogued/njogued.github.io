@@ -35,7 +35,8 @@
   color: var(--muted);
 }
 
-.article__meta span:not(:last-child)::after {
+/* the date is a <time> for machine readability; the rest are <span> */
+.article__meta > *:not(:last-child)::after {
   content: " ·";
   color: var(--dashed);
 }
