@@ -109,7 +109,9 @@ the variable.
 - **New article:** copy `articles/base.html`; replace title, meta description,
   canonical, eyebrow topic, date, and reading time; write the body; then add a
   card to the Writing section of `index.html`, a `<url>` to `sitemap.xml`, and a
-  row to the "more writing" list in every other article.
+  row to the "more writing" list in every other article. `SLUG` appears twice
+  in the template — the canonical *and* `og:url` — so replace both. The OG
+  image and card type are inherited; leave them alone.
 
 ## Design system
 
