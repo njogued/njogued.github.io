@@ -30,6 +30,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
     <link
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
@@ -85,7 +86,7 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Writing",
-            "item": "https://edwardnjogu.com/#writing"
+            "item": "https://edwardnjogu.com/articles/"
           },
           {
             "@type": "ListItem",
@@ -145,6 +146,10 @@
 
     <main id="main">
       <article class="wrap article">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">home</a><span aria-hidden="true">/</span><a href="/articles/">writing</a><span aria-hidden="true">/</span><span aria-current="page">Top Three AI Technologies and Trends to Look Out For in 2024</span>
+        </nav>
+
         <div class="article__head">
           <span class="eyebrow">// writing.ai</span>
           <h1 class="article__title">Top Three AI Technologies and Trends to Look Out For in 2024</h1>
@@ -256,6 +261,20 @@
         <div class="bodyText">Happy coding!</div>
         </div>
 
+        <aside class="article__cta">
+          <span class="eyebrow">// what next</span>
+          <p class="cta__title">Automating something like this?</p>
+          <p class="cta__text">
+            I build production n8n workflows, RAG pipelines, and LLM
+            integrations around the stack you already use. Tell me what you are
+            trying to automate and I will reply within one working day.
+          </p>
+          <div class="cta__row">
+            <a class="btn btn--primary" href="mailto:njogued@gmail.com">Start a project</a>
+            <a class="btn btn--ghost" href="/n8n-pro-tips/">Read the n8n guide</a>
+          </div>
+        </aside>
+
         <nav class="more" aria-label="More articles">
           <p class="more__head">// more writing</p>
           <div class="more__row">
@@ -280,7 +299,7 @@
           </div>
         </nav>
 
-        <a class="backlink" href="/#writing">// back to all writing</a>
+        <a class="backlink" href="/articles/">// back to all writing</a>
       </article>
     </main>
 

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>Edward Njogu — Writing</title>
-  <link>https://edwardnjogu.com/#writing</link>
+  <link>https://edwardnjogu.com/articles/</link>
   <atom:link href="https://edwardnjogu.com/feed.xml" rel="self" type="application/rss+xml" />
   <description>Notes on AI automation, n8n, and building things that run in production.</description>
   <language>en</language>

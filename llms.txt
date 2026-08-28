@@ -15,6 +15,8 @@ Site: https://edwardnjogu.com
 
 ## Writing
 
+Index: https://edwardnjogu.com/articles/
+
 - [A practical guide to self-hosting n8n with Docker](https://edwardnjogu.com/articles/n8n-self-hosting-docker.html): Self-hosting n8n for control over data, cost, and extensibility. 2025-10-22.
 - [Three AI technologies worth watching](https://edwardnjogu.com/articles/ai-2024.html): A 2024 predictions piece. 2023-12-17.
 - [All about APIs, with a practical example](https://edwardnjogu.com/articles/apis.html): How APIs work, with a live currency-converter demo. 2023-12-10.

@@ -10,6 +10,11 @@
 
 .article { padding-bottom: 96px; }
 
+/* the breadcrumb sits above .article__head, which owns the 88px top padding —
+   split that space so the crumb is not jammed against the nav */
+.article > .crumbs { margin-top: 40px; margin-bottom: 0; }
+.crumbs + .article__head { padding-top: 28px; }
+
 /* --- header ------------------------------------------------------------- */
 
 .article__head {
@@ -249,6 +254,43 @@ pre code {
 
 /* --- more articles ------------------------------------------------------ */
 
+/* end-of-article CTA — the six articles used to dead-end, which cost both the
+   internal link and the obvious next step for a reader who just found the site */
+.article__cta {
+  margin-top: 88px;
+  max-width: 46rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.article__cta .cta__title {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.article__cta .cta__text {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body-text);
+}
+
+.article__cta .cta__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .article__cta { padding: 24px; }
+}
+
 .more {
   margin-top: 88px;
   max-width: 46rem;
@@ -289,6 +331,8 @@ pre code {
 
 @media (max-width: 600px) {
   .article__head { padding-block: 48px 32px; }
+  .article > .crumbs { margin-top: 28px; }
+  .crumbs + .article__head { padding-top: 20px; }
   .article { padding-bottom: 64px; }
   .subTitle { margin-top: 40px; font-size: 22px; }
   .bodyText, .listItems, .article__body li { font-size: 16px; }

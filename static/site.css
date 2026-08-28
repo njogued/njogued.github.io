@@ -765,6 +765,25 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .subentry p { font-size: 15px; line-height: 1.55; }
 
+/* breadcrumbs — visible counterpart to the BreadcrumbList schema, which Google
+   prefers to see matched on the page rather than declared alone */
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--violet); }
+.crumbs span[aria-hidden] { color: var(--dashed); }
+.crumbs [aria-current] { color: var(--ink); }
+
 .backlink {
   display: inline-block;
   margin-top: 40px;

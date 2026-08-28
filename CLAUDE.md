@@ -74,6 +74,8 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 │   └── styles.css              # LEGACY, orphaned — safe to delete
 │
 ├── articles/
+│   ├── index.html              # Writing hub at /articles/ — Blog schema, lists
+│   │                           #   all six. Was a 404 until Aug 2026.
 │   ├── base.html               # Template for new articles
 │   ├── n8n-self-hosting-docker.html    # Lead article
 │   ├── apis.html               # Has an interactive Coinbase demo + inline JS
@@ -125,8 +127,9 @@ the variable.
 - **New article:** copy `articles/base.html`; replace title, meta description,
   canonical, eyebrow topic, date, and reading time; write the body; then add a
   card to the Writing section of `index.html`, a `<url>` to `sitemap.xml`, and a
-  row to the "more writing" list in every other article, an `<item>` to
-  `feed.xml`, and a line to `llms.txt`. In the template, replace **`SLUG`
+  row to the "more writing" list in every other article, a card **and** a
+  `blogPost` entry to `articles/index.html`, an `<item>` to `feed.xml`, and a
+  line to `llms.txt`. In the template, replace **`SLUG`
   everywhere** (canonical, `og:url`, and both JSON-LD blocks) and
   **`YYYY-MM-DD` everywhere** (`article:published_time`, the `<time datetime>`,
   and `datePublished`). The OG image and card type are inherited; leave them
@@ -145,7 +148,11 @@ Every page carries the same head contract. When adding a page, copy it whole:
   with a Range request; multi-line tags push `og:image` past the window.
 - A feed autodiscovery `<link>` to `/feed.xml`
 - JSON-LD: `Person` on the landing page, `BlogPosting` + `BreadcrumbList` on
-  articles, `CollectionPage` + `BreadcrumbList` on `/projects/`
+  articles, `Blog` + `BreadcrumbList` on `/articles/`, `CollectionPage` +
+  `BreadcrumbList` on `/projects/`. Every `author`/`publisher` carries
+  `"@id": "https://edwardnjogu.com/#person"` so the pages describe one entity.
+- A visible `.crumbs` breadcrumb matching the BreadcrumbList — Google prefers
+  the schema to have an on-page counterpart.
 
 Article dates live in three places that must agree: the visible
 `<time datetime>`, `article:published_time`, and JSON-LD `datePublished` —
@@ -194,6 +201,10 @@ python3 -m http.server 8000   # then http://localhost:8000
 
 - **No case studies.** The work section says "client automation work is under
   NDA — case studies in progress." This is the biggest remaining content gap.
+- **No FAQ section.** `FAQPage` is the one schema type here that is both
+  rich-result eligible and the shape answer engines quote most directly. It
+  needs real answers to real client questions, so it is waiting on content,
+  not markup.
 - `ai-2024.html` is a 2024 predictions piece that reads dated on a site selling
   AI expertise.
 - The hero promises a reply "within 1 working day" — a commitment, not a
