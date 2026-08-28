@@ -51,6 +51,9 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 │   ├── site.css                # THE design system (~980 lines): tokens, nav,
 │   │                           #   bands, cards, footer, doc pages
 │   ├── ed-site.svg             # Logo source (ED monogram, #4d0da2)
+│   ├── og-image.png            # 1200x630 link-preview card (og:image)
+│   ├── og-image.src.html       # Source for the above — re-render with
+│   │                           #   headless Chrome, do not hand-edit the PNG
 │   ├── favicons/               # favicon.svg + PNG set + site.webmanifest
 │   └── styles.css              # LEGACY, orphaned — safe to delete
 │

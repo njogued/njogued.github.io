@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --ink:#100b1c; --ink-border:#2c2438; --white:#fff;
+    --dark-body:#b8b2c2; --dark-muted:#79728a;
+    --violet:#4d0da2; --violet-lift:#a97fe8; --signal:#e8590c;
+    --sans:"Geist", system-ui, -apple-system, sans-serif;
+    --mono:"Geist Mono", ui-monospace, Menlo, monospace;
+  }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:var(--ink); font-family:var(--sans);
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:72px 80px; position:relative; overflow:hidden;
+  }
+  .glow {
+    position:absolute; top:-260px; right:-200px; width:720px; height:720px;
+    background:radial-gradient(circle, rgba(77,13,162,.55) 0%, rgba(77,13,162,0) 68%);
+  }
+  .top { display:flex; align-items:flex-start; justify-content:space-between; position:relative; }
+  .eyebrow {
+    font-family:var(--mono); font-size:19px; letter-spacing:.06em;
+    color:var(--dark-muted);
+  }
+  .eyebrow b { color:var(--violet-lift); font-weight:500; }
+  .mark svg { width:74px; height:48px; display:block; }
+  .mark path { fill:var(--violet-lift); }
+  .mid { position:relative; }
+  h1 {
+    font-size:76px; font-weight:600; line-height:1.04;
+    letter-spacing:-.022em; color:var(--white);
+  }
+  h1 .rule { display:block; width:64px; height:3px; background:var(--violet-lift); margin:0 0 30px; }
+  p {
+    margin-top:26px; font-size:29px; line-height:1.42; font-weight:400;
+    color:var(--dark-body); max-width:930px; letter-spacing:-.005em;
+  }
+  .bot {
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px solid var(--ink-border); padding-top:26px; position:relative;
+  }
+  .stack { display:flex; gap:12px; }
+  .chip {
+    font-family:var(--mono); font-size:17px; color:var(--dark-body);
+    border:1px solid var(--ink-border); border-radius:2px; padding:9px 15px;
+  }
+  .status { font-family:var(--mono); font-size:18px; color:var(--dark-body); letter-spacing:.01em; }
+  .dot { width:9px; height:9px; border-radius:50%; background:var(--signal); }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <div class="top">
+    <div class="eyebrow">// <b>edwardnjogu.com</b></div>
+    <div class="mark">
+      <svg xmlns="http://www.w3.org/2000/svg" width="62" height="40" viewBox="0 0 62 40" fill="none"><g transform="translate(0, 40) scale(1, -1)"><g><path d="M32 10H42C47.5228 10 52 14.4772 52 20C52 25.5228 47.5228 30 42 30H36V28H42C46.4183 28 50 24.4183 50 20C50 15.5817 46.4183 12 42 12H32V22H42C43.1046 22 44 21.1046 44 20C44 18.8954 43.1046 18 42 18H36V16H42C44.2091 16 46 17.7909 46 20C46 22.2091 44.2091 24 42 24H32V34H42C49.732 34 56 27.732 56 20C56 12.268 49.732 6 42 6H36V4H42C50.8366 4 58 11.1634 58 20C58 28.8366 50.8366 36 42 36H32V40H42C53.0457 40 62 31.0457 62 20C62 8.95431 53.0457 0 42 0H32V10Z"/><path d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40H30V30H20C14.4772 30 10 25.5228 10 20C10 14.4772 14.4772 10 20 10H26V12H20C15.5817 12 12 15.5817 12 20C12 24.4183 15.5817 28 20 28H30V18H20C18.8954 18 18 18.8954 18 20C18 21.1046 18.8954 22 20 22H26V24H20C17.7909 24 16 22.2091 16 20C16 17.7909 17.7909 16 20 16H30V6H20C12.268 6 6 12.268 6 20C6 27.732 12.268 34 20 34H26V36H20C11.1634 36 4 28.8366 4 20C4 11.1634 11.1634 4 20 4H30V0H20Z"/></g></g></svg>
+    </div>
+  </div>
+
+  <div class="mid">
+    <h1><span class="rule"></span>Edward Njogu</h1>
+    <p>AI automation &amp; n8n developer. Turning manual, repetitive ops into workflows that run in production.</p>
+  </div>
+
+  <div class="bot">
+    <div class="stack">
+      <span class="chip">n8n</span>
+      <span class="chip">RAG · pgvector</span>
+      <span class="chip">LLM integrations</span>
+      <span class="chip">Supabase</span>
+    </div>
+    <div class="status">njogued@gmail.com</div>
+  </div>
+</body>
+</html>
