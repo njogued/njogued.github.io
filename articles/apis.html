@@ -58,11 +58,13 @@
         "image": "https://edwardnjogu.com/static/og-card.jpg",
         "author": {
           "@type": "Person",
+          "@id": "https://edwardnjogu.com/#person",
           "name": "Edward Njogu",
           "url": "https://edwardnjogu.com/"
         },
         "publisher": {
           "@type": "Person",
+          "@id": "https://edwardnjogu.com/#person",
           "name": "Edward Njogu",
           "url": "https://edwardnjogu.com/"
         }
@@ -163,7 +165,7 @@
           requests and responses between the server and the client. The
           endpoints used can be obtained from the API’s documentation.
         </div>
-        <h5 class="subTitle">API Protocols</h5>
+        <h2 class="subTitle">API Protocols</h2>
         <div class="bodyText">
           There are three main API protocols: representational state transfer
           (REST) APIs, remote procedural call (RPC) APIs, and simple object
@@ -172,7 +174,7 @@
           support for various data formats including JSON, XML, and plain text,
           and high scalability.
         </div>
-        <h5 class="subTitle">REST APIs</h5>
+        <h2 class="subTitle">REST APIs</h2>
         <div class="bodyText">
           REST APIs use HTTP requests (GET, PUT, POST, PATCH, DELETE) to access
           and use data. The response data is typically sent in the body of the
@@ -195,7 +197,7 @@
           takes one optional argument, the currency, as a query parameter.
         </div>
         <br />
-        <h5 class="subTitle">Practical Example</h5>
+        <h2 class="subTitle">Practical Example</h2>
         <div id="currencyDiv" class="bodyText">
           Specify currencies and press the <code>Get Exchange Rate</code> button
           to get exchange rates using the Coinbase API
@@ -259,7 +261,7 @@ fetch(apiUrl)
 })</pre
         >
 
-        <h5 class="subTitle">API Authentication: Securing Connections</h5>
+        <h2 class="subTitle">API Authentication: Securing Connections</h2>
         <div class="bodyText">
           REST APIs are stateless, meaning they store no data between requests.
           Therefore, for APIs that require authentication, authentication must
@@ -273,7 +275,7 @@ fetch(apiUrl)
           the simplicity in use, API keys are commonly employed for paid APIs,
           and are either sent as query parameters or in the request header.
         </div>
-        <h5 class="subTitle">Free APIs: Exploring Without Authentication</h5>
+        <h2 class="subTitle">Free APIs: Exploring Without Authentication</h2>
         <div class="bodyText">
           APIs like the Coinbase API used for the demo do not require
           authentication. Other commonly used free APIs include:
@@ -307,7 +309,7 @@ fetch(apiUrl)
             >200 free APIs here.</a
           >
         </div>
-        <h5 class="subTitle">Conclusion</h5>
+        <h2 class="subTitle">Conclusion</h2>
         <div class="bodyText">
           In conclusion, understanding APIs is pivotal in modern software
           development, where seamless communication between different systems is

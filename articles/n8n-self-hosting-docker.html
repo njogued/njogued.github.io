@@ -58,11 +58,13 @@
         "image": "https://edwardnjogu.com/static/og-card.jpg",
         "author": {
           "@type": "Person",
+          "@id": "https://edwardnjogu.com/#person",
           "name": "Edward Njogu",
           "url": "https://edwardnjogu.com/"
         },
         "publisher": {
           "@type": "Person",
+          "@id": "https://edwardnjogu.com/#person",
           "name": "Edward Njogu",
           "url": "https://edwardnjogu.com/"
         }
@@ -165,7 +167,7 @@
           you how to put n8n behind HTTPS, keep data persistent, and upgrade
           safely.
         </p>
-        <h5 class="subTitle">1) Self-hosting n8n for free on Google Cloud</h5>
+        <h2 class="subTitle">1) Self-hosting n8n for free on Google Cloud</h2>
         <p class="bodyText">
           Google Cloud’s Always Free program includes one non-preemptible
           e2-micro VM per month in specific US regions, 30 GB-months of Standard
@@ -179,7 +181,7 @@
           work well. For this guide, we focus on Google Cloud’s free option to
           minimize cost.
         </p>
-        <h5 class="subTitle">Create the VM on Google Cloud</h5>
+        <h2 class="subTitle">Create the VM on Google Cloud</h2>
         <p class="bodyText">
           In the Google Cloud Console, create or select a project, enable
           Compute Engine, then click Create instance.
@@ -194,7 +196,7 @@
           with your domain’s A record in your registrar (for example
           n8n.example.com). SSH into the VM from the console to continue.
         </p>
-        <h5 class="subTitle">Advanced for tiny RAM: add a small swapfile</h5>
+        <h2 class="subTitle">Advanced for tiny RAM: add a small swapfile</h2>
         <p class="bodyText">
           A modest swapfile can reduce out-of-memory crashes during spikes. It
           is not a replacement for RAM, it is a safety net.
@@ -216,13 +218,13 @@ free -h
 swapon --show
 </pre
         >
-        <h5 class="subTitle">2) Docker, in plain English</h5>
+        <h2 class="subTitle">2) Docker, in plain English</h2>
         <p class="bodyText">Image: a packaged app plus all dependencies.</p>
         <p class="bodyText">Container: a running instance of an image.</p>
         <p class="bodyText">
           Volume: a folder on disk that survives restarts and upgrades.
         </p>
-        <h5 class="subTitle">3) Install Docker and test</h5>
+        <h2 class="subTitle">3) Install Docker and test</h2>
         <p class="bodyText">Run these on the VM as a user with sudo.</p>
         <pre class="codeblock">
 # Patch the VM
@@ -242,7 +244,7 @@ docker version
 sudo apt-get install -y docker-compose-plugin
 docker compose version</pre
         >
-        <h5 class="subTitle">4) Quick start: n8n with a single docker run</h5>
+        <h2 class="subTitle">4) Quick start: n8n with a single docker run</h2>
         <p class="bodyText">
           Create folders and an environment file for persistent settings.
         </p>
@@ -277,9 +279,9 @@ docker run -d   --name n8n   --restart unless-stopped   --env-file /opt/n8n/.env
 docker ps
 curl -s http://127.0.0.1:5678/healthz</pre
         >
-        <h5 class="subTitle">
+        <h2 class="subTitle">
           5) Add HTTPS with Nginx and a free TLS certificate
-        </h5>
+        </h2>
         <p class="bodyText">Install Nginx and Certbot.</p>
         <pre class="codeblock">
 sudo apt-get install -y nginx certbot python3-certbot-nginx</pre
@@ -322,7 +324,7 @@ WEBHOOK_URL=https://n8n.example.com
 
 docker restart n8n</pre
         >
-        <h5 class="subTitle">6) Docker Compose version for easier upgrades</h5>
+        <h2 class="subTitle">6) Docker Compose version for easier upgrades</h2>
         <p class="bodyText">Compose makes your setup repeatable.</p>
         <pre class="codeblock">
 mkdir -p /opt/n8n-compose &amp;&amp; cd /opt/n8n-compose
@@ -364,10 +366,10 @@ docker compose up -d</pre
 docker ps
 curl -s http://127.0.0.1:5678/healthz</pre
         >
-        <h5 class="subTitle">
+        <h2 class="subTitle">
           7) Basics of self-hosted n8n: environment, storage, and backups
-        </h5>
-        <h5 class="subTitle">Environment variables you will actually use</h5>
+        </h2>
+        <h2 class="subTitle">Environment variables you will actually use</h2>
         <p class="bodyText">
           WEBHOOK_URL must match your public HTTPS URL so webhooks and redirects
           work.
@@ -379,7 +381,7 @@ curl -s http://127.0.0.1:5678/healthz</pre
           N8N_DEFAULT_BINARY_DATA_MODE=filesystem moves large payloads out of
           the DB and onto disk at N8N_BINARY_DATA_STORAGE_PATH.
         </p>
-        <h5 class="subTitle">Storage with SQLite</h5>
+        <h2 class="subTitle">Storage with SQLite</h2>
         <p class="bodyText">
           The official image uses SQLite by default, stored under
           /home/node/.n8n. Because you mapped /opt/n8n:/home/node/.n8n, your
@@ -394,7 +396,7 @@ docker stop n8n
 tar -czf /opt/backups/n8n-$(date +%F).tar.gz /opt/n8n /opt/n8n-media
 docker start n8n</pre
         >
-        <h5 class="subTitle">8) Troubleshooting</h5>
+        <h2 class="subTitle">8) Troubleshooting</h2>
         <p class="bodyText">View logs: docker logs -f n8n</p>
         <p class="bodyText">
           Health check: curl -s https://n8n.example.com/healthz
@@ -406,8 +408,8 @@ docker start n8n</pre
         <p class="bodyText">
           Patch the VM: sudo apt-get update &amp;&amp; sudo apt-get upgrade -y
         </p>
-        <h5 class="subTitle">9) Updating n8n to the latest version</h5>
-        <h5 class="subTitle">If you used a single docker run</h5>
+        <h2 class="subTitle">9) Updating n8n to the latest version</h2>
+        <h2 class="subTitle">If you used a single docker run</h2>
         <p class="bodyText">
           Choose a specific version tag rather than latest, so you can roll back
           predictably. Replace X.Y.Z with the target version.
@@ -429,7 +431,7 @@ docker logs --since=5m n8n | tail -n +1
 docker stop n8n &amp;&amp; docker rm n8n
 docker run -d ... n8nio/n8n:&lt;previous-tag&gt;</pre
         >
-        <h5 class="subTitle">If you used Docker Compose</h5>
+        <h2 class="subTitle">If you used Docker Compose</h2>
         <p class="bodyText">
           Edit docker-compose.yml and set the new tag for the image line, for
           example:
@@ -452,7 +454,7 @@ docker compose logs -f --since=5m</pre
 docker compose pull
 docker compose up -d</pre
         >
-        <h5 class="subTitle">If you also run Runners</h5>
+        <h2 class="subTitle">If you also run Runners</h2>
         <p class="bodyText">
           Update the Runners image tag in the same docker-compose.yml, then:
         </p>

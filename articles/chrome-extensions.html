@@ -58,11 +58,13 @@
         "image": "https://edwardnjogu.com/static/og-card.jpg",
         "author": {
           "@type": "Person",
+          "@id": "https://edwardnjogu.com/#person",
           "name": "Edward Njogu",
           "url": "https://edwardnjogu.com/"
         },
         "publisher": {
           "@type": "Person",
+          "@id": "https://edwardnjogu.com/#person",
           "name": "Edward Njogu",
           "url": "https://edwardnjogu.com/"
         }
@@ -163,7 +165,7 @@
           going over the manifest file, content scripts, background scripts, the
           popup, working with browser storage, and detecting browser events.
         </p>
-        <h5 class="subTitle">Manifest File</h5>
+        <h2 class="subTitle">Manifest File</h2>
         <p class="bodyText">
           Manifest.json is a JSON file that is the backbone of a Chrome
           extension. The manifest.json specifies all the important information
@@ -183,7 +185,7 @@
           Optionally, you may specify attributes such as author, description,
           permissions, and content_scripts.
         </p>
-        <h5 class="subTitle">Content Scripts</h5>
+        <h2 class="subTitle">Content Scripts</h2>
         <p class="bodyText">
           Content scripts manipulate the DOM and can be used to modify a
           webpage, click on buttons, insert new content, or remove content (such
@@ -210,7 +212,7 @@ chrome.action.onClicked.addListener((tab) => {
             >here.</a
           >
         </p>
-        <h5 class="subTitle">Background Scripts</h5>
+        <h2 class="subTitle">Background Scripts</h2>
         <p class="bodyText">
           The background script is the extension’s service worker and therefore
           does not have access to the DOM. The background script has storage
@@ -235,7 +237,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
 });</pre
         >
-        <h5 class="subTitle">The Popup</h5>
+        <h2 class="subTitle">The Popup</h2>
         <p class="bodyText">
           The popup is the visible content when the user clicks on the extension
           in the toolbar. The popup may be used to provide information on the
@@ -247,7 +249,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 "action": { "default_popup": "popup/popup.html" }</pre
         >
 
-        <h5 class="subTitle">Working with Browser Storage</h5>
+        <h2 class="subTitle">Working with Browser Storage</h2>
         <p class="bodyText">
           You may need to store, retrieve, and track changes to user data. To
           accomplish this, you can use Chrome’s storage API. Chrome can store
@@ -313,7 +315,7 @@ chrome.storage.session.setAccessLevel({ accessLevel: "TRUSTED_AND_UNTRUSTED_CONT
           >
         </p>
 
-        <h5 class="subTitle">Bonus: Detecting Browser Events</h5>
+        <h2 class="subTitle">Bonus: Detecting Browser Events</h2>
         <p class="bodyText">
           You may need your extension to detect changes in a webpage. The
           MutationObserver interface provides the ability to watch for changes

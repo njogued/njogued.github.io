@@ -62,6 +62,9 @@
 
 .subTitle {
   margin-top: 56px;
+  /* these are <h2> for document outline; site.css zeroes h1-h4 margins, so the
+     spacing the browser used to give the old <h5> is restored explicitly */
+  margin-bottom: 1.67em;
   font-size: 26px;
   font-weight: 600;
   line-height: 1.25;
