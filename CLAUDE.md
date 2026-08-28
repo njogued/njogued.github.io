@@ -64,9 +64,12 @@ redesign. Do not reintroduce them. Social and brand icons are inline SVG.
 │   ├── site.css                # THE design system (~980 lines): tokens, nav,
 │   │                           #   bands, cards, footer, doc pages
 │   ├── ed-site.svg             # Logo source (ED monogram, #4d0da2)
-│   ├── og-image.png            # 1200x630 link-preview card (og:image)
-│   ├── og-image.src.html       # Source for the above — re-render with
-│   │                           #   headless Chrome, do not hand-edit the PNG
+│   ├── og-card.jpg             # 1200x630 link-preview card — THE live og:image
+│   ├── og-image.png            # The same card as PNG. Superseded, kept only so
+│   │                           #   scrapers holding the old URL do not 404.
+│   │                           #   Safe to delete once caches age out (Sep 2026).
+│   ├── og-image.src.html       # Source for both — re-render with headless
+│   │                           #   Chrome, then convert; never hand-edit a binary
 │   ├── favicons/               # favicon.svg + PNG set + site.webmanifest
 │   └── styles.css              # LEGACY, orphaned — safe to delete
 │
@@ -135,8 +138,11 @@ Every page carries the same head contract. When adding a page, copy it whole:
 
 - `og:type`, `og:url` (**must equal the canonical** — LinkedIn caches on
   `og:url`, not canonical), `og:site_name`, `og:title`, `og:description`
-- `og:image` → `/static/og-image.png` with width/height/alt, and
-  `twitter:card="summary_large_image"`. One shared card sitewide, deliberately.
+- `og:image` → `/static/og-card.jpg` with `secure_url`, `type`, width, height,
+  and alt, plus `twitter:card="summary_large_image"` and `twitter:image`.
+  One shared card sitewide, deliberately.
+- **Keep the og block single-line and image-early.** LinkedIn reads the page
+  with a Range request; multi-line tags push `og:image` past the window.
 - A feed autodiscovery `<link>` to `/feed.xml`
 - JSON-LD: `Person` on the landing page, `BlogPosting` + `BreadcrumbList` on
   articles, `CollectionPage` + `BreadcrumbList` on `/projects/`
