@@ -6,47 +6,47 @@
   <atom:link href="https://edwardnjogu.com/feed.xml" rel="self" type="application/rss+xml" />
   <description>Notes on AI automation, n8n, and building things that run in production.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 22 Oct 2025 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 22 Oct 2025 00:00:00 +0300</lastBuildDate>
   <item>
     <title>A practical guide to self-hosting n8n with Docker</title>
     <link>https://edwardnjogu.com/articles/n8n-self-hosting-docker.html</link>
     <guid isPermaLink="true">https://edwardnjogu.com/articles/n8n-self-hosting-docker.html</guid>
-    <pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate>
+    <pubDate>Wed, 22 Oct 2025 00:00:00 +0300</pubDate>
     <description>n8n lets you orchestrate data and automate across tools. Self-hosting gives you control over data, cost, and extensibility, so you can tune performance,…</description>
   </item>
   <item>
     <title>Three AI technologies worth watching</title>
     <link>https://edwardnjogu.com/articles/ai-2024.html</link>
     <guid isPermaLink="true">https://edwardnjogu.com/articles/ai-2024.html</guid>
-    <pubDate>Sun, 17 Dec 2023 00:00:00 +0000</pubDate>
+    <pubDate>Sun, 17 Dec 2023 00:00:00 +0300</pubDate>
     <description>Since the release of ChatGPT in November 2022, generative AI has taken the world by storm. While the world of AI continues to evolve, it is important to…</description>
   </item>
   <item>
     <title>All about APIs, with a practical example</title>
     <link>https://edwardnjogu.com/articles/apis.html</link>
     <guid isPermaLink="true">https://edwardnjogu.com/articles/apis.html</guid>
-    <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
+    <pubDate>Sun, 10 Dec 2023 00:00:00 +0300</pubDate>
     <description>API stands for Application Programming Interface, and it refers to a mechanism of communication between two software systems. For example, an API may be…</description>
   </item>
   <item>
     <title>Getting started with Chrome extensions</title>
     <link>https://edwardnjogu.com/articles/chrome-extensions.html</link>
     <guid isPermaLink="true">https://edwardnjogu.com/articles/chrome-extensions.html</guid>
-    <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
+    <pubDate>Sat, 02 Dec 2023 00:00:00 +0300</pubDate>
     <description>If you perform repetitive tasks on the browser, you may need to build a browser extension. An extension can add features, enhance the functionality of a…</description>
   </item>
   <item>
     <title>Navigating the basics of pandas</title>
     <link>https://edwardnjogu.com/articles/pandas-intro.html</link>
     <guid isPermaLink="true">https://edwardnjogu.com/articles/pandas-intro.html</guid>
-    <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+    <pubDate>Mon, 20 Nov 2023 00:00:00 +0300</pubDate>
     <description>If you are an aspiring data analyst or data scientist, pandas is a crucial weapon to have in your arsenal. In this article, I will dive right into it and…</description>
   </item>
   <item>
     <title>Five lessons from shipping a software project</title>
     <link>https://edwardnjogu.com/articles/dev-lessons.html</link>
     <guid isPermaLink="true">https://edwardnjogu.com/articles/dev-lessons.html</guid>
-    <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate>
+    <pubDate>Sat, 04 Nov 2023 00:00:00 +0300</pubDate>
     <description>Having developed a few full-stack web applications, using Flask , Django , and Express , I have gained a few insights into the development process that…</description>
   </item>
 </channel>
